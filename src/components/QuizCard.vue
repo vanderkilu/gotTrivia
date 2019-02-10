@@ -25,38 +25,17 @@
 import Question from './Question.vue'
 import Option from './Option.vue'
 import {eventBus} from '../main.js'
+import json from '../assets/quiz.json'
 export default {
     data() {
         return {
-            questions: [
-                {
-                    id: 1,
-                    question: 'who was the king in the north',
-                    options: [
-                        'John snow',
-                        'Sir Davos',
-                        'Tyrion Lannister',
-                        'Jamie Lannister'
-                    ],
-                    correct: 'John snow'
-                },
-                {
-                    id: 2,
-                    question: 'who was the lady of winterfell',
-                    options: [
-                        'Arya Stark',
-                        'Sansa Stark',
-                        'Lady Magerine',
-                        'Melisandre '
-                    ],
-                    correct: 'Sansa Stark'
-                }
-            ],
+            questions: [],
             count: 0,
             transitionName: 'slide-right',
             correctCount: 0,
             wrongCount: 0,
-            walkHistory: []
+            walkHistory: [],
+            json: json
         }
     },
     components: {
@@ -96,6 +75,8 @@ export default {
         }
     },
     mounted() {
+        this.questions = this.json.data
+        this.questions = this.questions.filter((question) => question !== null)
         eventBus.$on('INCREASE_CORRECT_SCORE', (count)=> {
             if (!this.visited) {
                 this.correctCount += count
