@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrapper-main">
+    <app-quiz></app-quiz>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+<script>
+import QuizCard from './components/QuizCard.vue'
 export default {
-  name: 'app',
   components: {
-    HelloWorld
+    appQuiz: QuizCard
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+ *,*::before, *::after {
+   padding: 0;
+   margin: 0;
+ }
+  html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #183048;
+    font-family:'Montserrat', sans-serif;
+  }
+  .wrapper-main {
+    width: 60%;
+    margin: 5rem auto;
+  }
+  @media only screen and (max-width: 900px) {
+    .wrapper-main {
+      width: 80%;
+      overflow: hidden;
+    }
+  }
 </style>
