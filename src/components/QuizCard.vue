@@ -2,19 +2,20 @@
     <div class="wrapper">
         <div class="stat-wrapper">
             <i class="icon-times">&times;</i>
-             <span class="stat stat-wrong">3</span>
-            <span class="stat stat-correct">2</span>
+             <span class="stat stat-wrong">{{wrongCount}}</span>
+            <span class="stat stat-correct">{{correctCount}}</span>
             <i class="icon-check">&#10003;</i>
         </div>
         <transition-group :name="transitionName">
             <div v-for="(question,i) in questions" :key="question.id" v-show="count === i">
                 <app-question  :question="question"></app-question>
                 <div class="wrapper-option">
-                    <app-option v-for="(option,i) in question.options" :key="option" :index="i" :option="option"></app-option>
+                    <app-option v-for="(option,i) in question.options" :key="option" 
+                    :index="i" :option="option" :correct="question.correct"></app-option>
                 </div>
             </div>
         </transition-group>
-        <span class="control control-left" @click="prev"> <i class="left-arrow"> &lt;</i> </span>
+        <span class="control control-left" @click="prev" v-if="count > 0"> <i class="left-arrow"> &lt;</i> </span>
         <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
     </div>
 </template>
@@ -23,6 +24,7 @@
 <script>
 import Question from './Question.vue'
 import Option from './Option.vue'
+import {eventBus} from '../main.js'
 export default {
     data() {
         return {
@@ -51,7 +53,10 @@ export default {
                 }
             ],
             count: 0,
-            transitionName: 'slide-right'
+            transitionName: 'slide-right',
+            correctCount: 0,
+            wrongCount: 0,
+            walkHistory: []
         }
     },
     components: {
@@ -65,17 +70,44 @@ export default {
         }
     },
     methods: {
+        walk(count) {
+            if (this.walkHistory.includes(count)) {
+                this.visited = true
+            }
+            else {
+                this.walkHistory.push(count)
+                this.visited = false;
+            }
+        },
         next() {
             if (this.count >= this.questions.length-1){
                 this.count = this.questions.length-1
             } 
-            else this.count++
+            else {
+                this.count++ 
+            }
+            this.walk(this.count)
+            
         },
         prev() {
+            this.walk(this.count)
             if (this.count <= 0) this.count = 0
             else this.count--
         }
-    }
+    },
+    mounted() {
+        eventBus.$on('INCREASE_CORRECT_SCORE', (count)=> {
+            if (!this.visited) {
+                this.correctCount += count
+            }
+        })
+        eventBus.$on('INCREASE_WRONG_SCORE', (count)=> {
+            if (!this.visited) { 
+                this.wrongCount += count
+            }
+        })
+        eventBus.$on('VISITED', (bool)=> this.visited = bool)
+    },
 }
 </script>
 

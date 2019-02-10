@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "question": "who was the king in the north",
+            "options": [
+                "John snow",
+                "Sir Davos",
+                "Tyrion Lannister",
+                "Jamie Lannister"
+            ],
+            "correct": "John snow"
+        },
+        {
+            "question": "who was the lady of winterfell",
+            "options": [
+                "Arya Stark",
+                "Sansa Stark",
+                "Lady Magerine",
+                "Melisandre"
+            ],
+            "correct": "Sansa Stark"
+        }
+    ]
+}
