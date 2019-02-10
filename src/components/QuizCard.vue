@@ -1,0 +1,189 @@
+<template>
+    <div class="wrapper">
+        <div class="stat-wrapper">
+            <i class="icon-times">&times;</i>
+             <span class="stat stat-wrong">3</span>
+            <span class="stat stat-correct">2</span>
+            <i class="icon-check">&#10003;</i>
+        </div>
+        <transition-group :name="transitionName">
+            <div v-for="(question,i) in questions" :key="question.id" v-show="count === i">
+                <app-question  :question="question"></app-question>
+                <div class="wrapper-option">
+                    <app-option v-for="(option,i) in question.options" :key="option" :index="i" :option="option"></app-option>
+                </div>
+            </div>
+        </transition-group>
+        <span class="control control-left" @click="prev"> <i class="left-arrow"> &lt;</i> </span>
+        <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
+    </div>
+</template>
+
+
+<script>
+import Question from './Question.vue'
+import Option from './Option.vue'
+export default {
+    data() {
+        return {
+            questions: [
+                {
+                    id: 1,
+                    question: 'who was the king in the north',
+                    options: [
+                        'John snow',
+                        'Sir Davos',
+                        'Tyrion Lannister',
+                        'Jamie Lannister'
+                    ],
+                    correct: 'John snow'
+                },
+                {
+                    id: 2,
+                    question: 'who was the lady of winterfell',
+                    options: [
+                        'Arya Stark',
+                        'Sansa Stark',
+                        'Lady Magerine',
+                        'Melisandre '
+                    ],
+                    correct: 'Sansa Stark'
+                }
+            ],
+            count: 0,
+            transitionName: 'slide-right'
+        }
+    },
+    components: {
+        appQuestion: Question,
+        appOption: Option
+    },
+    watch: {
+        count(newValue, oldValue) {
+            if (newValue  > oldValue) this.transitionName = 'slide-right'
+            else this.transitionName = 'slide-left'
+        }
+    },
+    methods: {
+        next() {
+            if (this.count >= this.questions.length-1){
+                this.count = this.questions.length-1
+            } 
+            else this.count++
+        },
+        prev() {
+            if (this.count <= 0) this.count = 0
+            else this.count--
+        }
+    }
+}
+</script>
+
+<style scoped>
+    .wrapper {
+        position: relative;
+    }
+    .wrapper-option {
+        margin-top: 5rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+    }
+    .control{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        position: absolute;
+        color: #307878;
+        font-size: 2rem;
+        font-weight: 200;
+        background-color: white;
+        z-index: 1;
+    }
+    .control:hover {
+        cursor: pointer;
+    }
+    .control-left {
+        top: 50%;
+        left: -20rem;
+    }
+    .left-arrow, .right-arrow {
+        transition: all 0.5s;
+    }
+    .control-left:hover .left-arrow {
+        transform: translateX(-1rem);
+    }
+    .control-right:hover .right-arrow {
+        transform: translateX(1rem);
+    }
+    .control-right {
+        top: 50%;
+        right: -20rem;
+    }
+    .stat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
+        margin: 1rem;
+        background-color: white;
+        color: #307878;
+        font-size: 1.5rem;
+    }
+    .icon-check {
+        color: green;
+        font-size: 1.7rem;
+    }
+    .icon-times {
+        color: red;
+        font-size: 1.7rem;
+    }
+    .stat-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5rem;
+    }
+    .stat-wrong {
+        background-color: #ffebee;
+        color: #e57373;
+    }
+    .stat-correct {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+    }
+    .slide-right-enter-active, .slide-right-leave-active {
+        transition: all 0.5s;
+    }
+    .slide-left-enter-active, .slide-left-leave-active {
+        transition: all 0.5s;
+    }
+    .slide-right-enter, .slide-right-leave-to {
+        opacity: 0;
+        transform: translateX(-12rem);
+    }
+    .slide-left-enter, .slide-left-leave-to {
+        opacity: 0;
+        transform: translateX(12rem);
+    }
+    .slide-right-leave-active, .slide-left-leave-active {
+        position: absolute;
+    }
+
+
+    @media only screen and (max-width: 900px) {
+        .control-right {
+            top: 30%;
+            right: 5rem;
+        }
+        .control-left {
+            top: 30%;
+            left: 5rem;
+        }
+    }
+</style>
