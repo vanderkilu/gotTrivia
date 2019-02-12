@@ -55,7 +55,7 @@ export default {
     },
     mounted() {
         const date = new Date("Apr 14, 2019 18:30:00").getTime()
-        // this.beginCountDown(date)
+        this.beginCountDown(date)
     }
 }
 </script>
@@ -93,8 +93,8 @@ export default {
  }
  .timer__element {
      margin-left: 2rem;
-      font-size: 2.5rem;
-     font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 700;
 
  }
  .sub {
@@ -143,5 +143,37 @@ export default {
 }
 .arrow-down:hover {
      transform: translateY(1rem);
+}
+@media only screen and (max-width: 900px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        height: 100vh;
+        overflow: hidden;
+     }
+    .wrapper-left {
+        margin-top: 10rem;
+        padding: 2rem 4rem;
+    }
+    .wrapper-right {
+        margin-top: 10rem;
+        padding: 2rem 4rem;
+    }
+    .heading {
+        font-weight: 600;
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 1rem;
+    }
+    .text {
+        font-size: 1.7rem;
+        color: #eeeeee;
+        line-height: 1.4;
+        margin-bottom: 4rem;
+    }
 }
  </style>
