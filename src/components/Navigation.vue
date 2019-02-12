@@ -1,16 +1,18 @@
 <template>
     <div class="wrapper">
-         <nav class="nav" v-if="isToggled">
-            <router-link :to="{}" class="nav__link">Characters</router-link>
-            <router-link :to="{}" class="nav__link">Houses</router-link>
-            <router-link :to="{}" class="nav__link">Episodes</router-link>
-            <router-link :to="{}" class="nav__link">Trivia</router-link>
-        </nav>
-        <div class="menu" @click="this.isToggled = !this.isToggled">
+        <div class="menu" @click="isToggled = !isToggled">
             <span class="menu__line"></span>
             <span class="menu__line"></span>
             <span class="menu__line"></span>
         </div>
+        <transition name="navigation">
+            <nav class="nav" v-if="isToggled">
+                <router-link :to="{}" class="nav__link">Characters</router-link>
+                <router-link :to="{}" class="nav__link">Houses</router-link>
+                <router-link :to="{}" class="nav__link">Episodes</router-link>
+                <router-link :to="{}" class="nav__link">Trivia</router-link>
+            </nav>
+        </transition>
     </div> 
 </template>
 
@@ -28,7 +30,7 @@ export default {
 <style scoped>
     .nav {
         position: fixed;
-        width: 100vh;
+        width: 100%;
         height: 100%;
         z-index: 10;
         background-color: #307878;
@@ -44,7 +46,26 @@ export default {
         margin-bottom: 2rem;
         font-size: 3rem;
         font-weight: 200;
-        color: white;
+        color: #183048;
+        text-decoration: none;
+        padding: 1rem;
+        background-color: transparent;
+        position: relative;
+    }
+    .nav__link::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: #e0f2f1;
+        transition: all 0.5s;
+    }
+    .nav__link:hover:before {
+        width: 100%;
+        z-index: -1;
     }
     .menu {
         display: flex;
@@ -61,14 +82,26 @@ export default {
         top: 1rem;
         right: 2rem;
         z-index: 15;
+        cursor: pointer;
+    }
+    .menu:hover  .menu__line:not(:last-child){
+        margin-bottom: 0.8rem;
     }
      .menu__line {
          display: block;
          width: 50%;
          height: 2px;
          background-color: #307878;
+         transition: all 0.2s;
      }
      .menu__line:not(:last-child) {
          margin-bottom: 0.5rem;
+     }
+     .navigation-enter-active, .navigation-leave-active {
+         transition: all 0.5s;
+     }
+     .navigation-enter, .navigation-leave-to {
+         opacity: 0;
+         transform: translateY(-10rem);
      }
 </style>

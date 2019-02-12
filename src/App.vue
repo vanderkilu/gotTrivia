@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper-main">
+    <app-navigation></app-navigation>
     <app-quiz></app-quiz>
   </div>
 </template>
@@ -7,9 +8,11 @@
 
 <script>
 import QuizCard from './components/QuizCard.vue'
+import Navigation from './components/Navigation.vue'
 export default {
   components: {
-    appQuiz: QuizCard
+    appQuiz: QuizCard,
+    appNavigation: Navigation
   }
 }
 </script>
