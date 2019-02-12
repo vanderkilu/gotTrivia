@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper-main">
-    <app-navigation></app-navigation>
-    <app-quiz></app-quiz>
+  <div class="container">
+      <app-navigation></app-navigation>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -27,7 +27,6 @@ export default {
     box-sizing: border-box;
   }
   body {
-    background-color: #183048;
     font-family:'Montserrat', sans-serif;
   }
   .wrapper-main {

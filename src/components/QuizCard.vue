@@ -95,6 +95,7 @@ export default {
 <style scoped>
     .wrapper {
         position: relative;
+        background-color:#183048;
     }
     .wrapper-option {
         margin-top: 5rem;
