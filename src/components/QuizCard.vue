@@ -17,6 +17,11 @@
         </transition-group>
         <span class="control control-left" @click="prev" v-if="count > 0"> <i class="left-arrow"> &lt;</i> </span>
         <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
+        <div class="menu">
+            <span class="menu__line"></span>
+            <span class="menu__line"></span>
+            <span class="menu__line"></span>
+        </div>
     </div>
 </template>
 
@@ -187,6 +192,31 @@ export default {
     .slide-right-leave-active, .slide-left-leave-active {
         position: absolute;
     }
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0.5rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
+        background-color: white;
+        position: fixed;
+        top: 1rem;
+        right: 2rem;
+        z-index: 5
+    }
+     .menu__line {
+         display: block;
+         width: 50%;
+         height: 2px;
+         background-color: #307878;
+     }
+     .menu__line:not(:last-child) {
+         margin-bottom: 0.5rem;
+     }
 
 
     @media only screen and (max-width: 900px) {

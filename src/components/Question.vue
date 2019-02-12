@@ -30,7 +30,8 @@ export default {
 }
     @media only screen and (max-width: 900px) {
         .question__text {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
+            font-weight: 400;
         }
     }
 </style>
