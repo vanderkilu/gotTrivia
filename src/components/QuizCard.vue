@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper wrapper-main">
         <div class="stat-wrapper">
             <i class="icon-times">&times;</i>
              <span class="stat stat-wrong">{{wrongCount}}</span>
@@ -95,7 +95,6 @@ export default {
 <style scoped>
     .wrapper {
         position: relative;
-        background-color:#183048;
     }
     .wrapper-option {
         margin-top: 5rem;

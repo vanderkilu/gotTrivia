@@ -1,23 +1,24 @@
 <template>
-    <div class="wrapper">
-        <div class="wrapper-left">
-            <h3 class="heading"> A Trivia of Ice and Fire</h3>
-            <p class="text"> How well do you know your game of thrones trivia? 
-                Can you achieve the iron throne or are you destined to 
-                join the night watch along the wall?
-            </p>
-            <router-link :to={} class="btn-cta">play the trivia <i class="arrow-right">&rarr;</i></router-link>
+    <div class="container">
+        <div class="wrapper">
+            <div class="wrapper-left">
+                <h3 class="heading"> A Trivia of Ice and Fire</h3>
+                <p class="text"> How well do you know your game of thrones trivia? 
+                    Can you achieve the iron throne or are you destined to 
+                    join the night watch along the wall?
+                </p>
+                <router-link :to="{name: 'quiz'}" class="btn-cta">play the trivia <i class="arrow-right">&rarr;</i></router-link>
+            </div>
+            <div class="wrapper-right">
+                <p class="timer"> 
+                    <span class="timer__element">{{countdown.days}} <i class="sub">days</i> </span>
+                    <span class="timer__element">{{countdown.hours}} <i class="sub">hours</i> </span>
+                    <span class="timer__element">{{countdown.minutes}} <i class="sub">minutes</i> </span>
+                    <span class="timer__element">{{countdown.seconds}} <i class="sub">seconds</i> </span>
+                </p>
+                <p class="timer-text"> To Season Finale </p>
+            </div>
         </div>
-        <div class="wrapper-right">
-            <p class="timer"> 
-                <span class="timer__element">{{countdown.days}} <i class="sub">days</i> </span>
-                <span class="timer__element">{{countdown.hours}} <i class="sub">hours</i> </span>
-                <span class="timer__element">{{countdown.minutes}} <i class="sub">minutes</i> </span>
-                <span class="timer__element">{{countdown.seconds}} <i class="sub">seconds</i> </span>
-            </p>
-            <p class="timer-text"> To Season Finale </p>
-        </div>
-        <img src="../assets/darrow.svg" class="arrow-down">
     </div>
 </template>
 
@@ -66,7 +67,7 @@ export default {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      padding: 4rem;
-     height: 90vh;
+     height: 88vh;
      background-position: center;
      background-size: cover;
      background-repeat: no-repeat;
@@ -122,9 +123,13 @@ export default {
      background-color: #307878;
      color: white;
      font-size: 1.4rem;
+     transition: all 0.5s;
  }
  .btn-cta:focus {
      outline: none;
+ }
+ .btn-cta:hover {
+     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.01);
  }
  .arrow-right {
      color: white;
@@ -140,9 +145,6 @@ export default {
      cursor: pointer;
      transition: all 0.5s;
      padding: 1rem;
-}
-.arrow-down:hover {
-     transform: translateY(1rem);
 }
 @media only screen and (max-width: 900px) {
     .wrapper {

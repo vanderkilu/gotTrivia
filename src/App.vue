@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
       <app-navigation></app-navigation>
       <router-view></router-view>
   </div>
@@ -28,6 +28,7 @@ export default {
   }
   body {
     font-family:'Montserrat', sans-serif;
+    background-color:#183048;
   }
   .wrapper-main {
     width: 60%;
