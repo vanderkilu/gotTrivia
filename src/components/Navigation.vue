@@ -8,7 +8,7 @@
         <transition name="navigation">
             <nav class="nav" v-if="isToggled">
                 <router-link :to="{name: 'home'}" class="nav__link">Home</router-link>
-                <router-link :to="{}" class="nav__link">Characters</router-link>
+                <router-link :to="{name: 'characters'}" class="nav__link">Characters</router-link>
                 <router-link :to="{}" class="nav__link">Houses</router-link>
                 <router-link :to="{}" class="nav__link">Episodes</router-link>
                 <router-link :to="{}" class="nav__link">Trivia</router-link>
