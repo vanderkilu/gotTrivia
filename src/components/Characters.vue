@@ -2,23 +2,12 @@
     <div class="container">
         <app-search></app-search>
         <div class="card-container">
-            <div class="card">
-                <p class="name">Jon Snow</p>
-                <p class="house">Stark</p>
+            <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character._id)">
+                <p class="name">{{character.name}}</p>
+                <p class="house">{{character.house || 'unknown'}}</p>
             </div>
-             <div class="card">
-                <p class="name">Tommund </p>
-                <p class="house">Wildings</p>
-            </div>
-            <div class="card">
-                <p class="name">Lady Margarine</p>
-                <p class="house">Tyrel</p>
-             </div>
-             <div class="card">
-                <p class="name">Cersei Lannister</p>
-                <p class="house">Lannister</p>
-             </div>
         </div>
+        <app-loader></app-loader>
     </div>
 </template>
 
@@ -26,9 +15,41 @@
 
 <script>
 import Search from './Search.vue'
+import Loader from './Loader.vue'
+import {mapGetters, mapActions} from 'vuex'
 export default {
     components: {
-        appSearch: Search
+        appSearch: Search,
+        appLoader: Loader
+    },
+    computed: {
+        ...mapGetters([
+            'characters',
+            'paginateBy'
+        ])
+    },
+    methods: {
+        ...mapActions([
+            'setAllCharacters',
+            'setPaginateBy'
+        ]),
+        scroll() {
+            window.onscroll = ()=> {
+                let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight
+                if (bottomOfWindow) {
+                    let by = this.paginateBy += 10
+                    setTimeout(()=>this.setPaginateBy(by), 1000)
+                    
+                }
+            }
+        },
+        routeTo(id) {
+            this.$router.push({name: 'character', params: {id: id}})
+        }
+    },
+    mounted() {
+        this.setAllCharacters('/characters/')
+        this.scroll()
     }
 }
 </script>
@@ -55,6 +76,7 @@ export default {
         background-color: #304860;
         transition: all 0.5s;
         color: white;
+        cursor: pointer;
     }
     .name {
         font-size: 1.5rem;

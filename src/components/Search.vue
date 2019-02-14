@@ -1,13 +1,35 @@
 <template>
     <div class="flexbox">
-        <form class="search">
+        <div class="search">
             <div>
-                <input type="text" placeholder="       Search . . ." required>
+                <input type="text" placeholder="       Search character by name" required 
+                @keyup="search"
+                @change="search"
+                v-model="query">
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
+<script>
+import {mapActions} from 'vuex'
+export default {
+  data() {
+    return {
+      query: ''
+    }
+  },
+  methods: {
+   ...mapActions([
+     'filterBySearch'
+    ]),
+
+    search() {
+      this.filterBySearch(this.query)
+    }
+  }
+}
+</script>
 
 <style scoped>
 .flexbox {

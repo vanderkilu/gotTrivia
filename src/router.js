@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './components/Home.vue'
 import QuizCard from './components/QuizCard.vue'
 import Characters from './components/Characters.vue'
-
+import Character from './components/Character.vue'
 Vue.use(Router)
 
 
@@ -25,6 +25,11 @@ export default new Router({
             path: '/characters',
             name: 'characters',
             component: Characters
+        },
+        {
+            path: '/character/:id',
+            name: 'character',
+            component: Character
         }
     ] 
 })
