@@ -1,23 +1,37 @@
 <template>
     <div class="container">
+        <app-search></app-search>
         <div class="card-container">
             <div class="card">
                 <p class="name">Jon Snow</p>
                 <p class="house">Stark</p>
             </div>
              <div class="card">
-                <p class="name">Jon Snow</p>
-                <p class="house">Targaryen</p>
+                <p class="name">Tommund </p>
+                <p class="house">Wildings</p>
             </div>
             <div class="card">
-                <p class="name">Jon Snow</p>
+                <p class="name">Lady Margarine</p>
                 <p class="house">Tyrel</p>
+             </div>
+             <div class="card">
+                <p class="name">Cersei Lannister</p>
+                <p class="house">Lannister</p>
              </div>
         </div>
     </div>
 </template>
 
 
+
+<script>
+import Search from './Search.vue'
+export default {
+    components: {
+        appSearch: Search
+    }
+}
+</script>
 <style scoped>
     .container {
         width: 60%;
@@ -43,12 +57,12 @@
         color: white;
     }
     .name {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         color: white;
         margin-bottom: 2rem;
     }
     .house {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: #1b5e20;
         padding: 0.5rem 1.5rem;
         background-color: #e8f5e9;
