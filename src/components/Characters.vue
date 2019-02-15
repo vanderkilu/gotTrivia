@@ -31,7 +31,8 @@ export default {
     methods: {
         ...mapActions([
             'setAllCharacters',
-            'setPaginateBy'
+            'setPaginateBy',
+            'setCurrentLoader'
         ]),
         scroll() {
             window.onscroll = ()=> {
@@ -49,6 +50,7 @@ export default {
     },
     mounted() {
         this.setAllCharacters('/characters/')
+        this.setCurrentLoader('characters')
         this.scroll()
     }
 }
@@ -73,7 +75,7 @@ export default {
     }
      @media only screen and (max-width: 900px) { 
          .container {
-             width: 80%;
+             width: 70%;
          }
      }
 </style>

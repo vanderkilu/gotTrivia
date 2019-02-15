@@ -27,11 +27,13 @@ export default new Vuex.Store({
   state: {
       characters: [],
       houses:[],
-      isLoading: true,
+      isCharacterLoading:true,
+      isHouseLoading: true,
       search: [],
       charactersCount: 0,
       housesCount: 0,
       paginateBy: 50,
+      currentLoader: ''
   },
   mutations: {
     'SET_CHARACTERS'(state, characters) {
@@ -46,24 +48,30 @@ export default new Vuex.Store({
     },
     'FILTER_BY_SEARCH'(state, obj) {
         searchBy(obj, state)
+    },
+    'SET_CURRENT_LOADER'(state, loader) {
+        state.currentLoader = loader
     }
   },
   actions: {
       async setAllCharacters({commit,state}, url){
           let characters = await axios.get(`${baseUrl}${url}`)
           commit('SET_CHARACTERS', characters.data)
-          state.isLoading = false
+          state.isCharacterLoading = false
       },
       async setAllHouses({commit, state}, url) {
         let houses = await axios.get(`${baseUrl}${url}`)
         commit('SET_HOUSES', houses.data)
-        state.isLoading = false
+        state.isHouseLoading = false
       },
       filterBySearch({commit}, obj) {
           commit('FILTER_BY_SEARCH', obj)
       },
       setPaginateBy({commit}, count) {
           commit('PAGINATE_BY', count)
+      },
+      setCurrentLoader({commit}, loader) {
+          commit('SET_CURRENT_LOADER', loader)
       }
   },
   getters: {
@@ -74,7 +82,9 @@ export default new Vuex.Store({
           return state.houses
       },
       isLoading(state) {
-          return state.isLoading
+            if (state.currentLoader === 'characters')
+                return state.isCharacterLoading
+            return state.isHouseLoading
       },
       paginateBy(state) {
           return state.paginateBy
