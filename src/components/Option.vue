@@ -111,7 +111,8 @@ export default {
 
     @media only screen and (max-width: 900px) {
         .option {
-            min-height: 4rem;
+            min-height: 2.5rem;
+            padding: 1rem;
         }
     }
 </style>

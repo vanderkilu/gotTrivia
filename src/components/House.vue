@@ -7,23 +7,23 @@
             </div>
             <div class="card"  v-else-if="count === 1" key="2">
                 <p class="heading">title</p>
-                <p class="value">{{house.title}}</p>
+                <p class="value">{{house.title ? house.title : 'unknown'}}</p>
             </div>
             <div class="card"  v-else-if="count === 2" key="3">
                 <p class="heading">region</p>
-                <p class="value">{{house.region}}</p>
+                <p class="value">{{house.region ? house.region : 'unknown'}}</p>
             </div>
             <div class="card"  v-else-if="count === 3" key="4">
                 <p class="heading">overload</p>
-                <p class="value">{{house.overload}}</p>
+                <p class="value">{{house.overload ? house.overload : 'unknown'}}</p>
             </div>
             <div class="card"  v-else-if="count === 4" key="5">
                 <p class="heading">coat of arms</p>
-                <p class="value">{{house.coatOfArms}}</p>
+                <p class="value">{{house.coatOfArms ? house.coatOfArms : 'unknown'}}</p>
             </div>
             <div class="card"  v-else-if="count === 5" key="6">
                 <p class="heading">current lord</p>
-                <p class="value">{{house.currentLord}}</p>
+                <p class="value">{{house.currentLord ? house.currentLord : 'unknown'}}</p>
             </div>
         </transition>
          <span class="control control-left" @click="prev('houses')"> <i class="left-arrow"> &lt;</i> </span>
@@ -145,6 +145,7 @@ export default {
         .card {
             line-height: 1.4;
             color: #bdbdbd;
+            min-height: 25rem;
         }
     }
 </style>

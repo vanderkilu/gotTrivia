@@ -147,10 +147,12 @@ export default {
         }
         .value {
             font-size: 1.7rem;
+            font-weight: 400;
         }
         .card {
             line-height: 1.4;
             color: #bdbdbd;
+            min-height: 25rem;
         }
     }
 </style>
