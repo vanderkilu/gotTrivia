@@ -1,0 +1,187 @@
+<template>
+    <div class="container">
+        <p class="character-main">Biography of {{character.name}} </p>
+        <transition :name="transitionName">
+            <div class="card" v-if="count === 0" key="1">
+                <p class="name">{{character.name}}</p>
+            </div>
+            <div class="card"  v-else-if="count === 1" key="2">
+                <p class="heading">house</p>
+                <p class="value">{{character.house}}</p>
+            </div>
+            <div class="card"  v-else-if="count === 2" key="3">
+                <p class="heading">Titles</p>
+                <p class="value" v-for="title in character.titles" :key="title">{{title}}</p>
+            </div>
+            <div class="card"  v-else-if="count === 3" key="4">
+                <p class="heading">Books</p>
+                <p class="value" v-for="book in character.books" :key="book">{{book}}</p>
+            </div>
+            <div class="card"   v-else-if="count === 4" key="5">
+                <p class="heading">spouse</p>
+                <p class="value">{{character.spouse || 'unmarried' }}</p>
+            </div>
+        </transition>
+         <span class="control control-left" @click="prev"> <i class="left-arrow"> &lt;</i> </span>
+        <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
+    </div>
+</template>
+
+
+<script>
+import axios from 'axios'
+export default {
+    data() {
+        return {
+            count: 0,
+            transitionName: 'slide-right',
+            character: {
+                name: '',
+                house: '',
+                books: [],
+                titles: [],
+                spouse: '',
+                mother: '',
+                father: '',
+                heir: '',
+
+
+            }
+        }
+    },
+    watch: {
+        count(newValue, oldValue) {
+            if (newValue  > oldValue) this.transitionName = 'slide-right'
+            else this.transitionName = 'slide-left'
+        }
+    },
+    methods: {
+        next() {
+            if (this.count >= 4) {
+                this.count = 4
+            }
+            else {
+                this.count++
+            }
+            
+        },
+        prev() {
+            if (this.count <=0 ) {
+                this.$router.push({name: 'characters'})
+            }
+            else {
+                this.count--
+            }
+            
+        },
+        async getCharacter() {
+            let character = await axios.get(`https://api.got.show/api/characters/byId/${this.$route.params.id}/`)
+            this.character = character.data.data
+            console.log(character)
+        }
+    },
+    mounted() {
+       this.getCharacter()
+    }
+}
+</script>
+
+<style scoped>
+    .container {
+        width: 50%;
+        margin: 5rem auto;
+        margin-top: 10rem;
+        position: relative;
+    }
+    .character-main {
+        text-align: center;
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 5rem;
+    }
+    .card {
+        padding: 4rem;
+        min-height: 20rem;
+        border-radius: 3px;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: #304860;
+        transition: all 0.5s;
+    }
+    .name {
+        font-size: 1.7rem;
+        color: white;
+        font-weight: 300;
+    }
+    .heading {
+        font-size: 1.7rem;
+        color: white;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        color: #307878;
+    }
+    .value {
+        font-size: 1.4rem;
+        color: #eeeeee;
+        margin: 0.5rem;
+    }
+    .control{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        position: absolute;
+        color: #307878;
+        font-size: 2rem;
+        font-weight: 200;
+        background-color: white;
+        z-index: 1;
+    }
+    .control:hover {
+        cursor: pointer;
+    }
+    .control-left {
+        top: 50%;
+        left: -20rem;
+    }
+    .left-arrow, .right-arrow {
+        transition: all 0.5s;
+    }
+    .control-left:hover .left-arrow {
+        transform: translateX(-1rem);
+    }
+    .control-right:hover .right-arrow {
+        transform: translateX(1rem);
+    }
+    .control-right {
+        top: 50%;
+        right: -20rem;
+    }
+    .character-enter-active, .character-leave-active {
+        transition: all 0.5s;
+    }
+    @media only screen and (max-width: 900px) {
+        .container {
+            width: 90%;
+        }
+        .control-right {
+            top: 120%;
+            right: 5rem;
+        }
+        .control-left {
+            top: 120%;
+            left: 5rem;
+        }
+        .heading {
+            font-size: 2rem;
+        }
+        .value {
+            font-size: 1.7rem;
+        }
+    }
+</style>
