@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-detail">
         <p class="character-main">Biography of <span class="green">{{character.name}}</span> </p>
         <transition :name="transitionName">
             <div class="card" v-if="count === 0" key="1">
@@ -30,19 +30,19 @@
                 <p class="value">{{character.male ? 'male': 'female'}}</p>
             </div>
         </transition>
-         <span class="control control-left" @click="prev"> <i class="left-arrow"> &lt;</i> </span>
-        <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
+         <span class="control control-left" @click="prev('characters')"> <i class="left-arrow"> &lt;</i> </span>
+        <span class="control control-right" @click="next(6)"><i class="right-arrow"> &gt;</i></span>
     </div>
 </template>
 
 
 <script>
 import axios from 'axios'
+import { controller } from './mixins/controller'
 export default {
+    mixins: [controller],
     data() {
         return {
-            count: 0,
-            transitionName: 'slide-right',
             character: {
                 name: '',
                 house: '',
@@ -52,36 +52,10 @@ export default {
                 mother: '',
                 father: '',
                 heir: '',
-
-
             }
-        }
-    },
-    watch: {
-        count(newValue, oldValue) {
-            if (newValue  > oldValue) this.transitionName = 'slide-right'
-            else this.transitionName = 'slide-left'
         }
     },
     methods: {
-        next() {
-            if (this.count >= 6) {
-                this.count = 6
-            }
-            else {
-                this.count++
-            }
-            
-        },
-        prev() {
-            if (this.count <=0 ) {
-                this.$router.push({name: 'characters'})
-            }
-            else {
-                this.count--
-            }
-            
-        },
         async getCharacter() {
             let character = await axios.get(`https://api.got.show/api/characters/byId/${this.$route.params.id}/`)
             this.character = character.data.data
@@ -94,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-    .container {
+    .container-detail {
         width: 50%;
         margin: 5rem auto;
         margin-top: 10rem;
