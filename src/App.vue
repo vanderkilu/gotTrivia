@@ -34,6 +34,26 @@ export default {
     width: 60%;
     margin: 5rem auto;
   }
+  .control:hover {
+        cursor: pointer;
+    }
+    .control-left {
+        top: 50%;
+        left: -20rem;
+    }
+    .left-arrow, .right-arrow {
+        transition: all 0.5s;
+    }
+    .control-left:hover .left-arrow {
+        transform: translateX(-1rem);
+    }
+    .control-right:hover .right-arrow {
+        transform: translateX(1rem);
+    }
+    .control-right {
+        top: 50%;
+        right: -20rem;
+    }
   .slide-right-enter-active, .slide-right-leave-active {
         transition: all 0.5s;
     }

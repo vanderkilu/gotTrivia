@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <p class="character-main">Biography of {{character.name}} </p>
+        <p class="character-main">Biography of <span class="green">{{character.name}}</span> </p>
         <transition :name="transitionName">
             <div class="card" v-if="count === 0" key="1">
                 <p class="name">{{character.name}}</p>
@@ -20,6 +20,14 @@
             <div class="card"   v-else-if="count === 4" key="5">
                 <p class="heading">spouse</p>
                 <p class="value">{{character.spouse || 'unmarried' }}</p>
+            </div>
+            <div class="card"   v-else-if="count === 5" key="6">
+                <p class="heading">culture</p>
+                <p class="value">{{character.culture || 'unknown' }}</p>
+            </div>
+            <div class="card"   v-else-if="count === 6" key="7">
+                <p class="heading">Gender</p>
+                <p class="value">{{character.male ? 'male': 'female'}}</p>
             </div>
         </transition>
          <span class="control control-left" @click="prev"> <i class="left-arrow"> &lt;</i> </span>
@@ -57,8 +65,8 @@ export default {
     },
     methods: {
         next() {
-            if (this.count >= 4) {
-                this.count = 4
+            if (this.count >= 6) {
+                this.count = 6
             }
             else {
                 this.count++
@@ -77,7 +85,6 @@ export default {
         async getCharacter() {
             let character = await axios.get(`https://api.got.show/api/characters/byId/${this.$route.params.id}/`)
             this.character = character.data.data
-            console.log(character)
         }
     },
     mounted() {
@@ -142,28 +149,8 @@ export default {
         background-color: white;
         z-index: 1;
     }
-    .control:hover {
-        cursor: pointer;
-    }
-    .control-left {
-        top: 50%;
-        left: -20rem;
-    }
-    .left-arrow, .right-arrow {
-        transition: all 0.5s;
-    }
-    .control-left:hover .left-arrow {
-        transform: translateX(-1rem);
-    }
-    .control-right:hover .right-arrow {
-        transform: translateX(1rem);
-    }
-    .control-right {
-        top: 50%;
-        right: -20rem;
-    }
-    .character-enter-active, .character-leave-active {
-        transition: all 0.5s;
+    .green {
+        color: #307878;
     }
     @media only screen and (max-width: 900px) {
         .container {

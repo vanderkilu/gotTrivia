@@ -116,26 +116,6 @@ export default {
         background-color: white;
         z-index: 1;
     }
-    .control:hover {
-        cursor: pointer;
-    }
-    .control-left {
-        top: 50%;
-        left: -20rem;
-    }
-    .left-arrow, .right-arrow {
-        transition: all 0.5s;
-    }
-    .control-left:hover .left-arrow {
-        transform: translateX(-1rem);
-    }
-    .control-right:hover .right-arrow {
-        transform: translateX(1rem);
-    }
-    .control-right {
-        top: 50%;
-        right: -20rem;
-    }
     .stat {
         display: flex;
         justify-content: center;
