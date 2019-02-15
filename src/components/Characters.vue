@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <app-search></app-search>
+        <app-search name="characters"></app-search>
         <div class="card-container">
             <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character._id)">
                 <p class="name">{{character.name}}</p>
@@ -58,25 +58,6 @@ export default {
         width: 60%;
         margin: 5rem auto;
         
-    }
-    .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        grid-gap: 3rem;
-    }
-    .card {
-        padding: 4rem;
-        height: 8rem;
-        border-radius: 3px;
-        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #304860;
-        transition: all 0.5s;
-        color: white;
-        cursor: pointer;
     }
     .name {
         font-size: 1.5rem;

@@ -9,7 +9,7 @@
             <nav class="nav" v-if="isToggled" @click="isToggled = false">
                 <router-link :to="{name: 'home'}" class="nav__link">Home</router-link>
                 <router-link :to="{name: 'characters'}" class="nav__link">Characters</router-link>
-                <router-link :to="{}" class="nav__link">Houses</router-link>
+                <router-link :to="{name: 'houses'}" class="nav__link">Houses</router-link>
                 <router-link :to="{name: 'quiz'}" class="nav__link">Trivia</router-link>
             </nav>
         </transition>

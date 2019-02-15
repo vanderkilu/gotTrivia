@@ -4,6 +4,7 @@ import Home from './components/Home.vue'
 import QuizCard from './components/QuizCard.vue'
 import Characters from './components/Characters.vue'
 import Character from './components/Character.vue'
+import Houses from './components/Houses.vue'
 Vue.use(Router)
 
 
@@ -30,6 +31,11 @@ export default new Router({
             path: '/character/:id',
             name: 'character',
             component: Character
+        },
+        {
+            path: '/houses',
+            name: 'houses',
+            component: Houses
         }
     ] 
 })

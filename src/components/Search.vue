@@ -2,7 +2,7 @@
     <div class="flexbox">
         <div class="search">
             <div>
-                <input type="text" placeholder="       Search character by name" required 
+                <input type="text" :placeholder="'search ' + name + ' by name'" required 
                 @keyup="search"
                 @change="search"
                 v-model="query">
@@ -14,6 +14,7 @@
 <script>
 import {mapActions} from 'vuex'
 export default {
+  props: ['name'],
   data() {
     return {
       query: ''
@@ -25,7 +26,7 @@ export default {
     ]),
 
     search() {
-      this.filterBySearch(this.query)
+      this.filterBySearch({name: this.name, query:this.query})
     }
   }
 }
