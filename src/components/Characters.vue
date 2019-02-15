@@ -90,4 +90,9 @@ export default {
         background-color: #e8f5e9;
         border-radius: 4rem;
     }
+     @media only screen and (max-width: 900px) { 
+         .container {
+             width: 80%;
+         }
+     }
 </style>
