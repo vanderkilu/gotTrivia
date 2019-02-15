@@ -25,7 +25,10 @@ export default {
         ...mapActions([
             'setAllHouses',
             'setCurrentLoader'
-        ])
+        ]),
+        routeTo(id) {
+            this.$router.push({name: 'house', params: {id: id}})
+        }
     },
     mounted() {
         this.setAllHouses('/houses/')

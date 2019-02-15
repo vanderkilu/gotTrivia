@@ -91,6 +91,7 @@ export default {
         align-items: center;
         background-color: #304860;
         transition: all 0.5s;
+        text-align: center;
     }
     .name {
         font-size: 1.7rem;
@@ -123,26 +124,33 @@ export default {
         background-color: white;
         z-index: 1;
     }
+    .control:active {
+        outline: none;
+    }
     .green {
         color: #307878;
     }
     @media only screen and (max-width: 900px) {
-        .container {
+        .container-detail {
             width: 90%;
         }
         .control-right {
             top: 120%;
-            right: 5rem;
+            right: 2rem;
         }
         .control-left {
             top: 120%;
-            left: 5rem;
+            left: 2rem;
         }
         .heading {
             font-size: 2rem;
         }
         .value {
             font-size: 1.7rem;
+        }
+        .card {
+            line-height: 1.4;
+            color: #bdbdbd;
         }
     }
 </style>
