@@ -2,7 +2,7 @@
     <div class="flexbox">
         <div class="search">
             <div>
-                <input type="text" :placeholder="'search ' + name + ' by name'" required 
+                <input type="text" :placeholder="'      search ' + name + ' by name'" required 
                 @keyup="search"
                 @change="search"
                 v-model="query">
