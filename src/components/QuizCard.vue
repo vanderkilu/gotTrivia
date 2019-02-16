@@ -78,10 +78,16 @@ export default {
             if (this.count <= 0) this.count = 0
             else this.count--
         },
+        reset() {
+            this.count = 0;
+            this.correctCount = 0;
+            this.wrongCount = 0;
+        },
         shuffleChoice() {
             let json = this.jsonArray[Math.floor(Math.random()*this.jsonArray.length)]
             this.questions = json.data
             this.questions = this.questions.filter((question) => question !== null)
+            this.reset()
         }
     },
     mounted() {
