@@ -30,6 +30,22 @@ export default {
     font-family:'Montserrat', sans-serif;
     background-color:#183048;
   }
+  .btn-cta {
+     text-decoration: none;
+     padding: 2rem 4rem;
+     border-radius: 6rem;
+     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+     background-color: #307878;
+     color: white;
+     font-size: 1.4rem;
+     transition: all 0.5s;
+ }
+ .btn-cta:focus {
+     outline: none;
+ }
+ .btn-cta:hover {
+     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.01);
+ }
   .wrapper-main {
     width: 60%;
     margin: 5rem auto;
