@@ -17,6 +17,7 @@
         </transition-group>
         <span class="control control-left" @click="prev" v-if="count > 0"> <i class="left-arrow"> &lt;</i> </span>
         <span class="control control-right" @click="next"><i class="right-arrow"> &gt;</i></span>
+        <span class="shf" @click="shuffleChoice">shuffle</span>
     </div>
 </template>
 
@@ -26,6 +27,9 @@ import Question from './Question.vue'
 import Option from './Option.vue'
 import {eventBus} from '../main.js'
 import json from '../assets/quiz.json'
+import json1 from '../assets/quiz1.json'
+import json2 from '../assets/quiz2.json'
+import json3 from '../assets/quiz3.json'
 export default {
     data() {
         return {
@@ -35,7 +39,8 @@ export default {
             correctCount: 0,
             wrongCount: 0,
             walkHistory: [],
-            json: json
+            json: json,
+            jsonArray: [json1, json2, json3,json]
         }
     },
     components: {
@@ -73,6 +78,11 @@ export default {
             this.walk(this.count)
             if (this.count <= 0) this.count = 0
             else this.count--
+        },
+        shuffleChoice() {
+            let json = this.jsonArray[Math.floor(Math.random()*this.jsonArray.length)]
+            this.questions = json.data
+            this.questions = this.questions.filter((question) => question !== null)
         }
     },
     mounted() {
@@ -150,6 +160,25 @@ export default {
     .stat-correct {
         background-color: #e8f5e9;
         color: #1b5e20;
+    }
+    .shf {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0.5rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
+        background-color: white;
+        position: fixed;
+        top: 1rem;
+        left: 2rem;
+        color:#307878;
+        z-index: 15;
+        cursor: pointer;
+        font-size: 1.2rem;
     }
     @media only screen and (max-width: 900px) {
         .control-right {
