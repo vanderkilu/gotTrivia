@@ -60,6 +60,7 @@ export default {
         },
         next() {
             if (this.count >= this.questions.length-1){
+                this.$router.push({name: 'weldone', params: {score: {correct: this.correctCount, total: this.this.questions.length}}})
                 this.count = this.questions.length-1
             } 
             else {

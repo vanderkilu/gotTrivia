@@ -6,6 +6,7 @@ import Characters from './components/Characters.vue'
 import Character from './components/Character.vue'
 import Houses from './components/Houses.vue'
 import House from './components/House.vue'
+import Weldone from './components/Weldone.vue'
 Vue.use(Router)
 
 
@@ -42,6 +43,11 @@ export default new Router({
             path: '/house/:id',
             name: 'house',
             component: House
+        },
+        {
+            path: '/weldone',
+            name: 'weldone',
+            component: Weldone
         }
     ] 
 })
