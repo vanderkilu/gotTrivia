@@ -82,6 +82,7 @@ export default {
             this.count = 0;
             this.correctCount = 0;
             this.wrongCount = 0;
+            this.visited = false;
         },
         shuffleChoice() {
             let json = this.jsonArray[Math.floor(Math.random()*this.jsonArray.length)]
