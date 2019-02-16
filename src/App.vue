@@ -1,7 +1,9 @@
 <template>
   <div>
       <app-navigation></app-navigation>
-      <router-view></router-view>
+      <transition :name="transitionName">
+           <router-view></router-view>
+      </transition>
   </div>
 </template>
 
@@ -10,10 +12,22 @@
 import QuizCard from './components/QuizCard.vue'
 import Navigation from './components/Navigation.vue'
 export default {
-  components: {
-    appQuiz: QuizCard,
-    appNavigation: Navigation
-  }
+    data() {
+        return {
+             transitionName: 'slide-right',
+        }
+    },
+    watch: {
+        '$route'(to, from) {
+        const toDepth = to.path.split('/').length
+        const fromDepth = from.path.split('/').length
+        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+        }
+    },
+    components: {
+        appQuiz: QuizCard,
+        appNavigation: Navigation
+    }
 }
 </script>
 
