@@ -27,7 +27,6 @@ import Question from './Question.vue'
 import Option from './Option.vue'
 import {eventBus} from '../main.js'
 import json from '../assets/quiz.json'
-import json1 from '../assets/quiz1.json'
 import json2 from '../assets/quiz2.json'
 import json3 from '../assets/quiz3.json'
 export default {
@@ -40,7 +39,7 @@ export default {
             wrongCount: 0,
             walkHistory: [],
             json: json,
-            jsonArray: [json1, json2, json3,json]
+            jsonArray: [json2, json3,json]
         }
     },
     components: {
