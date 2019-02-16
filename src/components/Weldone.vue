@@ -1,13 +1,31 @@
 <template>
     <div class="container">
         <div class="card">
-            <p class="done-message">Hey awesome player,<i class="emoji">👋</i> have completed the quiz </p>
-            <p class="done-message__small">you got  right answers<i class="emoji">🙂</i></p>
+            <p class="done-message">Hey <i class="emoji">👋</i> awesome player,have completed the quiz </p>
+            <p class="done-message__small">you got <i class="score"> {{score.correct}} / {{score.total}} </i> right answers</p>
         </div>
-        <router-link :to="{name: 'quiz'}" class="btn-cta">back to quiz <i class="arrow-right">&larr;</i></router-link>
+        <router-link :to="{name: 'quiz'}" class="btn-cta">back to quiz<i class="arrow-right">&larr;</i></router-link>
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            score: {
+                correct: 0,
+                total: 0
+            }
+        }
+    },
+    mounted() {
+        if (this.$route.params.score) {
+            this.score.correct = this.$route.params.score.correct
+            this.score.total = this.$route.params.score.total
+        }
+    }
+}
+</script>
 
 <style scoped>
     .container {
@@ -23,8 +41,7 @@
         text-align: center;
     }
     .emoji {
-        color: #e65100;
-        margin: 0 1rem
+        color: red;
     }
     .done-message {
         font-size: 1.7rem;
@@ -33,12 +50,22 @@
     .done-message__small {
         font-size: 1.4rem;
     }
+    .score {
+        display: inline-block;
+        color: #1b5e20;
+        padding: 0.1rem 1rem;
+        background-color: #e8f5e9;
+        border-radius: 1rem;
+    }
     @media only screen and (max-width: 900px) { 
         .container {
             width: 80%;
         }
         .card {
             min-height: 30rem;
+        }
+        .done-message {
+            line-height: 1.5;
         }
     }
 </style>
