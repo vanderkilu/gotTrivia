@@ -152,7 +152,7 @@ export default {
         .card {
             line-height: 1.4;
             color: #bdbdbd;
-            min-height: 25rem;
+            min-height: 30rem;
         }
     }
 </style>

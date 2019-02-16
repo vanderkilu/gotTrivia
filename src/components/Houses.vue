@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <app-search name="houses"></app-search>
+        <app-warning></app-warning>
         <div class="card-container">
             <div class="card" v-for="house in houses" :key="house._id" @click="routeTo(house._id)">
                 <p class="name">{{house.name}}</p>
@@ -15,6 +16,7 @@
 import {mapActions, mapGetters} from 'vuex'
 import Search from './Search.vue'
 import Loader from './Loader.vue'
+import Warning from './Warning.vue'
 export default {
     computed: {
         ...mapGetters([
@@ -36,7 +38,8 @@ export default {
     },
     components: {
         appSearch: Search,
-        appLoader: Loader
+        appLoader: Loader,
+        appWarning: Warning
     }
 }
 </script>

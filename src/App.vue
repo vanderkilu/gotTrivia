@@ -1,7 +1,7 @@
 <template>
   <div>
       <app-navigation></app-navigation>
-      <transition :name="transitionName">
+      <transition name="fade">
            <router-view></router-view>
       </transition>
   </div>
@@ -15,13 +15,6 @@ export default {
     data() {
         return {
              transitionName: 'slide-right',
-        }
-    },
-    watch: {
-        '$route'(to, from) {
-        const toDepth = to.path.split('/').length
-        const fromDepth = from.path.split('/').length
-        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
     },
     components: {
@@ -105,6 +98,12 @@ export default {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         grid-gap: 3rem;
+    }
+    .fade-enter-active, .fade-leave-to {
+        transition: all 0.5s;
+    }
+    .fade-enter, .fade-leave-active {
+        opacity: 0;
     }
     .card {
         padding: 4rem;

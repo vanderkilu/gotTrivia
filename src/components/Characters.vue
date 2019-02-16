@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <app-search name="characters"></app-search>
+        <app-warning></app-warning>
         <div class="card-container">
             <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character._id)">
                 <p class="name">{{character.name}}</p>
@@ -16,11 +17,13 @@
 <script>
 import Search from './Search.vue'
 import Loader from './Loader.vue'
+import Warning from './Warning.vue'
 import {mapGetters, mapActions} from 'vuex'
 export default {
     components: {
         appSearch: Search,
-        appLoader: Loader
+        appLoader: Loader,
+        appWarning: Warning
     },
     computed: {
         ...mapGetters([
@@ -73,6 +76,7 @@ export default {
         background-color: #e8f5e9;
         border-radius: 4rem;
     }
+    
      @media only screen and (max-width: 900px) { 
          .container {
              width: 70%;
