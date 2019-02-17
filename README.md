@@ -1,4 +1,5 @@
 # GotTrivia
+a game of thrones trivia app built with vue.js and pure css
 
 ## Project setup
 ```
