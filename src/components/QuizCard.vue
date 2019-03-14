@@ -116,7 +116,7 @@ export default {
     .wrapper-option {
         margin-top: 5rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(2,1fr);
         grid-gap: 2rem;
     }
     .control{
@@ -194,6 +194,9 @@ export default {
         .control-left {
             top: 30%;
             left: 5rem;
+        }
+        .wrapper-option {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
     }
 </style>
