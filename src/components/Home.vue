@@ -10,13 +10,14 @@
                 <router-link :to="{name: 'quiz'}" class="btn-cta">play the trivia <i class="arrow-right">&rarr;</i></router-link>
             </div>
             <div class="wrapper-right">
-                <p class="timer"> 
+                <p class="timer" v-if="!hasCountedDown"> 
                     <span class="timer__element">{{countdown.days}} <i class="sub">days</i> </span>
                     <span class="timer__element">{{countdown.hours}} <i class="sub">hours</i> </span>
                     <span class="timer__element">{{countdown.minutes}} <i class="sub">minutes</i> </span>
                     <span class="timer__element">{{countdown.seconds}} <i class="sub">seconds</i> </span>
                 </p>
-                <p class="timer-text"> To Season Finale </p>
+                <p class="timer-text" v-if="!hasCountedDown"> To Season Finale </p>
+                <p class="timer-text bold" v-else>Winter Is Here </p>
             </div>
         </div>
     </div>
@@ -32,7 +33,8 @@ export default {
                 minutes: null,
                 seconds: null,
                 message: ''
-            }
+            },
+            hasCountedDown: false
         }
     },
 
@@ -45,10 +47,12 @@ export default {
                 this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
                 this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
                 this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
+                console.log(distance)
 
                 if (distance < 0) {
                     clearInterval(timer)
-                    countdown.message = "THE FINAL SEASON HAS STARTED"
+                    this.countdown.message = "THE FINAL SEASON HAS STARTED"
+                    this.hasCountedDown = true
                 }
 
             }, 1000)
@@ -103,7 +107,7 @@ export default {
      font-size: 1.2rem;
      font-weight: 200;
  }
- .heading {
+ .heading, .bold {
      font-weight: 600;
      font-size: 4rem;
      color: white;
@@ -129,6 +133,9 @@ export default {
      cursor: pointer;
      transition: all 0.5s;
      padding: 1rem;
+}
+.bold {
+    font-weight: 500;
 }
 @media only screen and (max-width: 900px) {
     .wrapper {
