@@ -7,7 +7,9 @@
              :key="character._id" 
              @click="routeTo(character.slug)"
         >
-             <img :src="character.image" alt="character-image" class="character__image">
+             <img :src="character.image ? character.image : imgPlaceholder" 
+                  alt="character-image" 
+                  class="character__image">
              <h3 class="character__name">{{character.name}}</h3>
         </div>
         </div>
@@ -22,7 +24,13 @@ import Search from './Search.vue'
 import Loader from './Loader.vue'
 import Warning from './Warning.vue'
 import {mapGetters, mapActions} from 'vuex'
+import { imagePlaceholder } from '../helpers'
 export default {
+    data() {
+        return {
+            imgPlaceholder: imagePlaceholder
+        }
+    },
     components: {
         appSearch: Search,
         appLoader: Loader,
