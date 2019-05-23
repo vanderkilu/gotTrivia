@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
-const baseUrl = 'https://api.got.show/api'
+let baseUrl = 'https://api.got.show/api'
 
 const filterSearch = (name, state ,query) => {
     if (state[name + 'Count'] <= 0) {

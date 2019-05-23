@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import store from './store'
 
 Vue.config.productionTip = false
+export const BASE_URL = 'https://api.got.show/api'
 
 export const eventBus = new Vue()
 

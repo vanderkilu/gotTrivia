@@ -73,6 +73,9 @@ export default {
             this.walk(this.count)
             
         },
+        automaticNext() {
+            setTimeout(()=> this.next(), 2000)
+        },
         prev() {
             this.walk(this.count)
             if (this.count <= 0) this.count = 0

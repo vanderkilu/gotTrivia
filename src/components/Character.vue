@@ -39,6 +39,7 @@
 <script>
 import axios from 'axios'
 import { controller } from './mixins/controller'
+import {BASE_URL} from '../main'
 export default {
     mixins: [controller],
     data() {
@@ -57,7 +58,9 @@ export default {
     },
     methods: {
         async getCharacter() {
-            let character = await axios.get(`https://api.got.show/api/characters/byId/${this.$route.params.id}/`)
+            const url = `${BASE_URL}/book/characters/bySlug/${this.$route.params.id}/`
+            let character = await axios.get(url)
+            console.log(character)
             this.character = character.data.data
         }
     },

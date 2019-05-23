@@ -3,7 +3,7 @@
         <app-search name="characters"></app-search>
         <app-warning></app-warning>
         <div class="card-container">
-            <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character._id)">
+            <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character.slug)">
                 <p class="name">{{character.name}}</p>
                 <p class="house">{{character.house || 'unknown'}}</p>
             </div>
@@ -47,12 +47,12 @@ export default {
                 }
             }
         },
-        routeTo(id) {
-            this.$router.push({name: 'character', params: {id: id}})
+        routeTo(slug) {
+            this.$router.push({name: 'character', params: {id: slug}})
         }
     },
     mounted() {
-        this.setAllCharacters('/characters/')
+        this.setAllCharacters('/book/characters')
         this.setCurrentLoader('characters')
         this.scroll()
     }
