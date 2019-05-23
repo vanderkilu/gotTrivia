@@ -46,7 +46,7 @@ export default {
         margin-bottom: 2rem;
         font-size: 3rem;
         font-weight: 200;
-        color: var(--color-primary);
+        color: #183048;
         text-decoration: none;
         padding: 1rem;
         background-color: transparent;

@@ -74,7 +74,7 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: white;
+        background-color: #304860;
         padding: 2rem 0;
         box-shadow: 0 1rem 4rem rgba(0,0,0,0.04);
         margin-bottom: 2rem;
@@ -85,9 +85,10 @@ export default {
         border-radius: 2px;
     }
     .character__name {
-        color: var(--color-primary);
+        color: var(--color-secondary);
         font-size: 1.7rem;
         margin-top: 2rem;
+        text-align: center;
     }
     .character__played-by {
         color: #616161;

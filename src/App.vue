@@ -28,6 +28,8 @@ export default {
 
 :root {
     --color-primary: #307878;
+    --color-secondary: #ffffff;
+    --bg-color:#183048;
 }
  *,*::before, *::after {
    padding: 0;
@@ -40,7 +42,7 @@ export default {
   body {
     font-family:'Montserrat', sans-serif;
     background-color:#183048;
-    background-color: ghostwhite;
+    background-color: var(--bg-color);
   }
   .btn-cta {
      text-decoration: none;

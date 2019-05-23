@@ -185,7 +185,7 @@ export default {
         top: 1rem;
         left: 2rem;
         color:#307878;
-        z-index: 15;
+        z-index: 9;
         cursor: pointer;
         font-size: 1.2rem;
     }
