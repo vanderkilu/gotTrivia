@@ -60,8 +60,8 @@ export default {
         async getCharacter() {
             const url = `${BASE_URL}/book/characters/bySlug/${this.$route.params.id}/`
             let character = await axios.get(url)
-            console.log(character)
-            this.character = character.data.data
+            this.character = character.data
+            console.log(this.character)
         }
     },
     mounted() {
