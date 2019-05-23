@@ -34,6 +34,7 @@
 <script>
 import { controller } from './mixins/controller'
 import axios from 'axios'
+import {BASE_URL} from '../main'
 export default {
     mixins: [controller],
     data() {
@@ -50,8 +51,9 @@ export default {
     },
     methods: {
         async getHouse() {
-            let house = await axios.get(`https://api.got.show/api/houses/byId/${this.$route.params.id}/`)
-            this.house = house.data.data
+            const url = `${BASE_URL}/show/houses/${this.$route.params.id}/`
+            let house = await axios.get(url)
+            this.house = house.data[0]
         }
     },
     mounted() {

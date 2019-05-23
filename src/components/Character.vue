@@ -58,7 +58,7 @@ export default {
     },
     methods: {
         async getCharacter() {
-            const url = `${BASE_URL}/book/characters/bySlug/${this.$route.params.id}/`
+            const url = `${BASE_URL}/show/characters/bySlug/${this.$route.params.id}/`
             let character = await axios.get(url)
             this.character = character.data
             console.log(this.character)

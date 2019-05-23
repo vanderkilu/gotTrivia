@@ -52,7 +52,7 @@ export default {
         }
     },
     mounted() {
-        this.setAllCharacters('/book/characters')
+        this.setAllCharacters('/show/characters')
         this.setCurrentLoader('characters')
         this.scroll()
     }

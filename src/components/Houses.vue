@@ -3,7 +3,7 @@
         <app-search name="houses"></app-search>
         <app-warning></app-warning>
         <div class="card-container">
-            <div class="card" v-for="house in houses" :key="house._id" @click="routeTo(house._id)">
+            <div class="card" v-for="house in houses" :key="house._id" @click="routeTo(house.name)">
                 <p class="name">{{house.name}}</p>
                 <p class="title">{{house.region || 'unknown'}}</p>
             </div>
@@ -28,12 +28,12 @@ export default {
             'setAllHouses',
             'setCurrentLoader'
         ]),
-        routeTo(id) {
-            this.$router.push({name: 'house', params: {id: id}})
+        routeTo(slug) {
+            this.$router.push({name: 'house', params: {id: slug}})
         }
     },
     mounted() {
-        this.setAllHouses('/houses/')
+        this.setAllHouses('/show/houses/')
         this.setCurrentLoader('houses')
     },
     components: {

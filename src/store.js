@@ -42,8 +42,6 @@ export default new Vuex.Store({
     },
     'SET_HOUSES'(state, houses) {
         state.houses = houses
-        state.houses = state.houses.filter((house)=> Object.keys(house).includes('region'))
-
     },
     'PAGINATE_BY'(state, count) {
         state.paginateBy += count
@@ -63,6 +61,7 @@ export default new Vuex.Store({
       },
       async setAllHouses({commit, state}, url) {
         let houses = await axios.get(`${baseUrl}${url}`)
+        console.log(houses)
         commit('SET_HOUSES', houses.data)
         state.isHouseLoading = false
       },
