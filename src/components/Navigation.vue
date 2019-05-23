@@ -33,7 +33,7 @@ export default {
         width: 100%;
         height: 100%;
         z-index: 10;
-        background-color: #307878;
+        background-color: var(--color-primary);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -46,7 +46,7 @@ export default {
         margin-bottom: 2rem;
         font-size: 3rem;
         font-weight: 200;
-        color: #183048;
+        color: var(--color-primary);
         text-decoration: none;
         padding: 1rem;
         background-color: transparent;
@@ -91,7 +91,7 @@ export default {
          display: block;
          width: 50%;
          height: 2px;
-         background-color: #307878;
+         background-color: var(--color-primary);
          transition: all 0.2s;
      }
      .menu__line:not(:last-child) {

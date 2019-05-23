@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <app-search name="characters"></app-search>
-        <app-warning></app-warning>
-        <div class="card-container">
-            <div class="card" v-for="character in characters" :key="character._id" @click="routeTo(character.slug)">
-                <p class="name">{{character.name}}</p>
-                <p class="house">{{character.house || 'unknown'}}</p>
-            </div>
+        <div class="character-container">
+        <div class="character" v-for="character in characters" :key="character._id">
+             <img :src="character.image" alt="character-image" class="character__image">
+             <h3 class="character__name">{{character.name}}</h3>
+             <!-- <p class="character__played-by">Adam warren</p> -->
+        </div>
         </div>
         <app-loader></app-loader>
     </div>
@@ -60,26 +60,37 @@ export default {
 </script>
 <style scoped>
     .container {
-        width: 60%;
+        width: 90%;
         margin: 5rem auto;
         
     }
-    .name {
-        font-size: 1.5rem;
-        color: white;
+    .character-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 1rem;
+    }
+    .character {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 2rem 0;
+        box-shadow: 0 1rem 4rem rgba(0,0,0,0.04);
         margin-bottom: 2rem;
     }
-    .house {
-        font-size: 1.2rem;
-        color: #1b5e20;
-        padding: 0.5rem 1.5rem;
-        background-color: #e8f5e9;
-        border-radius: 4rem;
+    .character__image {
+        max-width: 60%;
+        height: auto;
+        border-radius: 2px;
     }
-    
-     @media only screen and (max-width: 900px) { 
-         .container {
-             width: 70%;
-         }
-     }
+    .character__name {
+        color: var(--color-primary);
+        font-size: 1.7rem;
+        margin-top: 2rem;
+    }
+    .character__played-by {
+        color: #616161;
+        font-size: 1.5rem;
+    }
 </style>

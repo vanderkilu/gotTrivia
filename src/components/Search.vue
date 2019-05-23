@@ -50,41 +50,41 @@ export default {
 
 .search > div:after {
   content: "";
-  background: white;
+  background: var(--color-primary);
   width: 4px;
   height: 20px;
   position: absolute;
   top: 40px;
   right: 2px;
   transform: rotate(135deg);
-  box-shadow: 1px 0 #0091c2;
+  box-shadow: 1px 0 var(--color-primary);
 }
 
 .search > div > input {
-  color: white;
+  color: var(--color-primary);
   font-size: 16px;
   background: transparent;
   width: 25px;
   height: 25px;
   padding: 10px;
-  border: solid 3px white;
+  border: solid 2px var(--color-primary);
   outline: none;
   border-radius: 35px;
-  box-shadow: 0 1px #0091c2;
+  box-shadow: 0 1px var(--color-primary);
   transition: width 0.5s;
 }
 
 .search > div > input::placeholder {
-  color: #efefef;
+  color: var(--color-primary);
   opacity: 1;
 }
 
 .search > div > input::-ms-placeholder {
-  color: #efefef;
+  color: var(--color-primary);
 }
 
 .search > div > input::-ms-input-placeholder {
-  color: #efefef;
+  color: var(--color-primary);
 }
 
 .search > div > input:focus,
