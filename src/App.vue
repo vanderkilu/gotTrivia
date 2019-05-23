@@ -29,6 +29,7 @@ export default {
 :root {
     --color-primary: #307878;
     --color-secondary: #ffffff;
+    --color-tertiary: #304860;
     --bg-color:#183048;
 }
  *,*::before, *::after {
@@ -49,7 +50,7 @@ export default {
      padding: 2rem 4rem;
      border-radius: 6rem;
      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
-     background-color: #307878;
+     background-color: var(--color-primary);
      color: white;
      font-size: 1.4rem;
      transition: all 0.5s;

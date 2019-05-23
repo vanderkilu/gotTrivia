@@ -2,10 +2,13 @@
     <div class="container">
         <app-search name="characters"></app-search>
         <div class="character-container">
-        <div class="character" v-for="character in characters" :key="character._id">
+        <div class="character" 
+             v-for="character in characters" 
+             :key="character._id" 
+             @click="routeTo(character.slug)"
+        >
              <img :src="character.image" alt="character-image" class="character__image">
              <h3 class="character__name">{{character.name}}</h3>
-             <!-- <p class="character__played-by">Adam warren</p> -->
         </div>
         </div>
         <app-loader></app-loader>
@@ -74,10 +77,15 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #304860;
+        background-color: var(--color-tertiary);
         padding: 2rem 0;
         box-shadow: 0 1rem 4rem rgba(0,0,0,0.04);
         margin-bottom: 2rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .character:hover {
+        transform: translateY(-0.5rem);
     }
     .character__image {
         max-width: 60%;
@@ -89,9 +97,5 @@ export default {
         font-size: 1.7rem;
         margin-top: 2rem;
         text-align: center;
-    }
-    .character__played-by {
-        color: #616161;
-        font-size: 1.5rem;
     }
 </style>

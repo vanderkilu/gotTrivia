@@ -43,7 +43,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #304860;
+        background-color: var(--color-tertiary);
         transition: all 0.5s;
         position: relative;
     }
@@ -52,7 +52,7 @@ export default {
         background-color: whitesmoke;
     }
     .option:hover .option__text {
-        color: #307878;
+        background-color: var(--color-primary);
     }
     .option__text {
         font-size: 1.3rem;
