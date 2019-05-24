@@ -10,16 +10,28 @@
                 <div class="character__run">
                     <p> appearance meter <span class="noe">( {{ character.appearances.length }} episodes )</span> </p>
                     <div class="progress">
-                        <div class="progress__main"></div>
+                        <div class="progress__main" :style="{width: meter + '%'}"></div>
                     </div> 
                 </div>
-                <p class="character__house">Theon Greyjoy is of  <span class="color-yellow">House Stark </span> </p>
-                <p class="character__first-seen"><span class="color-yellow">{{character.first_seen}} </span>  was {{ thirdPerson }} first scene   </p>
+                <p class="character__house">{{character.name}} is of  <span class="color-yellow">{{character.house}}</span> </p>
+                <p class="character__first-seen">
+                    <span class="color-yellow">
+                        {{character.first_seen}} 
+                    </span>  
+                    was {{ thirdPerson }} first scene   
+                </p>
                 <button class="btn btn-favourite">Add To Favourites 💜 😍 💗</button>
             </div>
         </div>
         <div class="description">
             <h3 class="description__header"> Relations </h3>
+            <div class="card-container">
+                <div class="card" v-for="character in character.related" 
+                                  :key="character._id" 
+                                  @click="routeTo(character.slug)">
+                    <p class="name">{{character.name}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -67,6 +79,9 @@ export default {
                 return "his"
             }
             return "her"
+        },
+        meter() {
+            return (this.character.appearances.length / 73.0) * 100
         }
     },
     methods: {
@@ -75,6 +90,9 @@ export default {
             let character = await axios.get(url)
             this.character = character.data
             console.log(this.character)
+        },
+        routeTo(slug) {
+            this.$router.push({name: 'character', params: {id: slug}})
         }
     },
     mounted() {
@@ -174,6 +192,32 @@ export default {
     }
     .description__header {
         font-size: 2rem;
-        color: var(--color-secondary)
+        color: var(--color-secondary);
+        margin-bottom: 5rem;
+    }
+    .card-container {
+        grid-gap: 1rem;
+    }
+    .card {
+        height: 5rem;
+    }
+    .name {
+        font-size: 1.6rem;
+        font-weight: 510;
+        color: white
+    }
+    .episodes {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 0.5rem;
+    }
+    .episode {
+        background-color: var(--color-tertiary);
+        font-size: 1.4rem;
+        color: white;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

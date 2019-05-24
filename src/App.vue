@@ -2,7 +2,7 @@
   <div>
       <app-navigation></app-navigation>
       <transition name="fade">
-           <router-view></router-view>
+           <router-view :key="$route.path"></router-view>
       </transition>
   </div>
 </template>
