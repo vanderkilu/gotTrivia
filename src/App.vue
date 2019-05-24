@@ -30,6 +30,7 @@ export default {
     --color-primary: #307878;
     --color-secondary: #ffffff;
     --color-tertiary: #304860;
+    --color-decor: #5CDB95;
     --bg-color:#183048;
 }
  *,*::before, *::after {

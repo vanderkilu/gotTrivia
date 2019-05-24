@@ -50,11 +50,10 @@ export default {
         ]),
         scroll() {
             window.onscroll = ()=> {
-                let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight
+                let bottomOfWindow = document.documentElement.scrollTop + 
+                    window.innerHeight === document.documentElement.offsetHeight
                 if (bottomOfWindow) {
-                    let by = this.paginateBy += 10
-                    setTimeout(()=>this.setPaginateBy(by), 1000)
-                    
+                    setTimeout(()=>this.setPaginateBy(this.paginateBy += 10), 1000)
                 }
             }
         },
