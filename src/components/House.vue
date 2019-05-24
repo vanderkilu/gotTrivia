@@ -13,11 +13,10 @@ export default {
         return {
             house: {
                 name: '',
-                title: '',
-                overload: '',
-                coatOfArms: '',
-                region: '',
-                currentLord: ''
+                seat: [],
+                region: [],
+                sigil: '',
+                words: ''
             }
         }
     },
@@ -25,6 +24,7 @@ export default {
         async getHouse() {
             const url = `${BASE_URL}/show/houses/${this.$route.params.id}/`
             let house = await axios.get(url)
+            console.log(house)
             this.house = house.data[0]
         }
     },
@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .container-detail {
-        width: 50%;
+        width: 60%;
         margin: 5rem auto;
         margin-top: 10rem;
         position: relative;
