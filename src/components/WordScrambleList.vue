@@ -8,7 +8,7 @@
             >
             </app-word-scramble>
         </div>
-        <form  class="form">
+        <form  class="word-form">
             <input type="text" class="input" placeholder="enter character name">
         </form>
     </div>
@@ -20,7 +20,7 @@ import WordScramble from './WordScramble'
 export default {
     data() {
         return {
-            words: ["just trying out"]
+            words: ["just trying out", "call", "maybe"]
         }
     },
     components: {
@@ -34,19 +34,18 @@ export default {
     .word-container{
         width: 60%;
         margin: 5rem auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 20rem;
+        grid-template-columns: 100%;
        
     }
     .word-list  {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
     }
-    .form {
+    .word-form {
         width: 100%;
-        bottom: 2rem;
-        margin: 0 auto;
     }
     .input {
         width: 100%;

@@ -55,5 +55,8 @@ export default new Router({
             component: Weldone
         },
         { path: '/*', redirect: { name: 'home' }}
-    ] 
+    ],
+    scrollBehavior() {
+        return {x: 0, y: 0}
+    }
 })

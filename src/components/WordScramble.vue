@@ -1,9 +1,14 @@
 <template>
     <div class="word">
-        <p class="word__text"> Walder Frey </p>
+        <p class="word__text"> {{word}} </p>
     </div>
 </template>
 
+<script>
+export default {
+    props: ['word']
+}
+</script>
 
 <style scoped>
     .word {
@@ -11,12 +16,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
         min-width: 30rem;
+       
     }
     .word__text {
         font-size: 1.5rem;
         background-color: var(--color-tertiary);
+        padding: 2rem;
         color: white;
     }
 </style>

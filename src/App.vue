@@ -40,11 +40,15 @@ export default {
   html {
     font-size: 62.5%;
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
   }
   body {
     font-family:'Montserrat', sans-serif;
     background-color:#183048;
     background-color: var(--bg-color);
+    width: 100%;
+    height: 100%;
   }
   .btn-cta {
      text-decoration: none;
