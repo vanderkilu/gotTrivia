@@ -71,6 +71,8 @@ export default {
             'setFilteredCharacters'
         ]),
         scroll() {
+            /* attempt to implement infinite scrolling
+            **/
             window.onscroll = ()=> {
                 let bottomOfWindow = document.documentElement.scrollTop + 
                     window.innerHeight === document.documentElement.offsetHeight
@@ -86,6 +88,9 @@ export default {
             await this.setAllCharacters('/show/characters')
             this.filterIt = this.strip()
         },
+        /*keeps copy of all characters 
+          and prevent direct mutation of the characters array
+        **/
         strip() {
             const characters = this.allCharacters.slice()
             const stripeDown = (param) => {
