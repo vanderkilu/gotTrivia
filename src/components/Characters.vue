@@ -14,7 +14,7 @@
             <button class="btn-outline" @click="filterBy('bolton')">
                 Boltons
             </button>
-            <button class="btn-outline" @click="filterBy('Greyjoys')">
+            <button class="btn-outline" @click="filterBy('greyjoy')">
                Greyjoys
             </button>
             <button class="btn-outline" @click="filterBy('baratheon')">

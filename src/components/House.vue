@@ -2,7 +2,7 @@
     <div class="container-detail">
         <h3 class="house__name">{{house.name}}</h3>
         <div class="house__details">
-            <div class="house__wrapper">
+            <div class="card">
                 <p class="house__text">Seat</p>
                 <p v-if="house.seat.length > 0" class="house__detail">
                     <span v-for="seat in house.seat" :key="seat">
@@ -11,7 +11,7 @@
                 </p>
                 <p v-else class="house__detail">Unknown</p>
             </div>
-            <div class="house__wrapper">
+            <div class="card">
                 <p class="house__text">Region</p>
                 <p v-if="house.region.length > 0" class="house__detail">
                     <span v-for="region in house.region" :key="region">
@@ -20,11 +20,11 @@
                 </p>
                 <p v-else class="house__detail">Unknown</p>
             </div>
-            <div class="house__wrapper">
+            <div class="card">
                 <p class="house__text">Sigil</p>
                 <p class="house__detail">{{house.sigil || 'Unknown'}}</p>
             </div>
-            <div class="house__wrapper">
+            <div class="card">
                 <p class="house__text">Words</p>
                 <p class="house__detail">{{house.words || 'Unknown'}}</p>
             </div>
@@ -73,23 +73,22 @@ export default {
     }
     .house__details {
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: 1fr;
         grid-gap: 2rem;
     }
-    .house__wrapper {
-        display: flex;
-        padding: 2rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .card {
+        background-color: transparent;
+        border: 2px solid var(--color-tertiary);
+        cursor:unset;
+    }
+    .card:hover {
         background-color: var(--color-tertiary);
-        border-radius: 3px;
-        min-height: 15rem;
     }
     .house__detail {
-        font-size: 1.3rem;
-        color: var(--color-secondary);
+        font-size: 1.5rem;
+        color: #e0e0e0;
         text-align: center;
+        font-weight: 570;
     }
     .house__name {
         font-size: 3rem;

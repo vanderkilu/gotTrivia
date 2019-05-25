@@ -198,8 +198,13 @@ export default {
     .card-container {
         grid-gap: 1rem;
     }
-    .card {
-        height: 5rem;
+     .card {
+        background-color: transparent;
+        border: 2px solid var(--color-tertiary);
+        cursor:unset;
+    }
+    .card:hover {
+        background-color: var(--color-tertiary);
     }
     .name {
         font-size: 1.6rem;

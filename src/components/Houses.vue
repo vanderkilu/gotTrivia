@@ -69,6 +69,13 @@ export default {
         background-color: #e8f5e9;
         border-radius: 4rem;
     }
+    .card {
+        background-color: transparent;
+        border: 2px solid var(--color-tertiary);
+    }
+    .card:hover {
+        background-color: var(--color-tertiary);
+    }
     @media only screen and (max-width: 900px) { 
          .container {
              width: 70%;
