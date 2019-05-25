@@ -52,7 +52,7 @@ export default {
         background-color: whitesmoke;
     }
     .option:hover .option__text {
-        background-color: var(--color-primary);
+        color: var(--color-primary);
     }
     .option__text {
         font-size: 1.3rem;
