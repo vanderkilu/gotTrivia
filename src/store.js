@@ -51,6 +51,9 @@ export default new Vuex.Store({
     },
     'SET_CURRENT_LOADER'(state, loader) {
         state.currentLoader = loader
+    },
+    'SET_FILTERED_CHARACTERS'(state, characters) {
+        state.characters = characters
     }
   },
   actions: {
@@ -73,11 +76,17 @@ export default new Vuex.Store({
       },
       setCurrentLoader({commit}, loader) {
           commit('SET_CURRENT_LOADER', loader)
+      },
+      setFilteredCharacters({commit}, characters) {
+          commit('SET_FILTERED_CHARACTERS', characters)
       }
   },
   getters: {
       characters(state) {
           return state.characters.slice(0,state.paginateBy)
+      },
+      allCharacters(state) {
+          return state.characters
       },
       houses(state) {
           return state.houses

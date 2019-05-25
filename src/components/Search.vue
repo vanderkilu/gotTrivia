@@ -37,7 +37,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
 }
 .search {
   margin: 20px;

@@ -1,6 +1,26 @@
 <template>
     <div class="container">
         <app-search name="characters"></app-search>
+        <div class="characters__filter">
+            <button class="btn-outline" @click="filterBy('all')">
+                All
+            </button>
+            <button class="btn-outline" @click="filterBy('stark')">
+                Starks
+            </button>
+            <button class="btn-outline" @click="filterBy('lannister')">
+                Lannisters
+            </button>
+            <button class="btn-outline" @click="filterBy('bolton')">
+                Boltons
+            </button>
+            <button class="btn-outline" @click="filterBy('Greyjoys')">
+               Greyjoys
+            </button>
+            <button class="btn-outline" @click="filterBy('baratheon')">
+                Baratheons
+            </button>
+        </div>
         <div class="character-container">
         <div class="character" 
              v-for="character in characters" 
@@ -28,7 +48,7 @@ import { imagePlaceholder } from '../helpers'
 export default {
     data() {
         return {
-            imgPlaceholder: imagePlaceholder
+            imgPlaceholder: imagePlaceholder,
         }
     },
     components: {
@@ -39,6 +59,7 @@ export default {
     computed: {
         ...mapGetters([
             'characters',
+            'allCharacters',
             'paginateBy'
         ])
     },
@@ -46,7 +67,8 @@ export default {
         ...mapActions([
             'setAllCharacters',
             'setPaginateBy',
-            'setCurrentLoader'
+            'setCurrentLoader',
+            'setFilteredCharacters'
         ]),
         scroll() {
             window.onscroll = ()=> {
@@ -59,10 +81,28 @@ export default {
         },
         routeTo(slug) {
             this.$router.push({name: 'character', params: {id: slug}})
+        },
+        async getCharacters() {
+            await this.setAllCharacters('/show/characters')
+            this.filterIt = this.strip()
+        },
+        strip() {
+            const characters = this.allCharacters.slice()
+            const stripeDown = (param) => {
+                if (param === 'all') return characters
+                return characters.filter(character => {
+                    const regex = new RegExp(param, 'gi')
+                    return character.name.match(regex)
+                })
+            }
+            return stripeDown
+        },
+        filterBy(param) {
+            this.setFilteredCharacters(this.filterIt(param))
         }
     },
     mounted() {
-        this.setAllCharacters('/show/characters')
+        this.getCharacters()
         this.setCurrentLoader('characters')
         this.scroll()
     }
@@ -104,5 +144,28 @@ export default {
         font-size: 1.7rem;
         margin-top: 2rem;
         text-align: center;
+    }
+    .characters__filter {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 2rem;
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+    .btn-outline {
+        padding: 1.5rem 2rem;
+        background-color: transparent;
+        border: 2px solid var(--color-tertiary);
+        border-radius: 3px;
+        color: var(--color-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    .btn-outline:focus {
+        outline: none;
+    }
+    .btn-outline:hover {
+        background-color: var(--color-tertiary);
     }
 </style>
