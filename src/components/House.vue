@@ -35,6 +35,7 @@
 <script>
 import { controller } from './mixins/controller'
 import axios from 'axios'
+import { mapActions } from 'vuex'
 import {BASE_URL} from '../main'
 export default {
     mixins: [controller],
@@ -50,15 +51,15 @@ export default {
         }
     },
     methods: {
-        async getHouse() {
-            const url = `${BASE_URL}/show/houses/${this.$route.params.id}/`
-            let house = await axios.get(url)
-            console.log(house)
-            this.house = house.data[0]
-        }
+       ...mapActions([
+           'getHouse'
+       ]),
+       async getCurrentHouse() {
+          this.house = await this.getHouse(this.$route.params.id)
+       }
     },
     mounted() {
-        this.getHouse()
+        this.getCurrentHouse()
     }
 }
 </script>

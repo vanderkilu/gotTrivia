@@ -125,6 +125,7 @@ export default {
         flex-direction: column;
         background-color: #304860;
         transition: all 0.5s;
+        text-align: center;
         color: white;
         cursor: pointer;
     }

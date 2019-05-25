@@ -40,6 +40,7 @@
 <script>
 import axios from 'axios'
 import { controller } from './mixins/controller'
+import { mapActions } from  'vuex'
 import {BASE_URL} from '../main'
 export default {
     mixins: [controller],
@@ -85,18 +86,18 @@ export default {
         }
     },
     methods: {
-        async getCharacter() {
-            const url = `${BASE_URL}/show/characters/bySlug/${this.$route.params.id}/`
-            let character = await axios.get(url)
-            this.character = character.data
-            console.log(this.character)
-        },
+        ...mapActions([
+            'getCharacter',
+        ]),
         routeTo(slug) {
             this.$router.push({name: 'character', params: {id: slug}})
+        },
+        async currentCharacter() {
+            this.character = await this.getCharacter(this.$route.params.id)
         }
     },
     mounted() {
-       this.getCharacter()
+       this.currentCharacter()
     }
 }
 </script>
@@ -201,7 +202,6 @@ export default {
      .card {
         background-color: transparent;
         border: 2px solid var(--color-tertiary);
-        cursor:unset;
     }
     .card:hover {
         background-color: var(--color-tertiary);

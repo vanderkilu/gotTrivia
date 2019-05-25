@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
-let baseUrl = 'https://api.got.show/api'
+const baseUrl = 'https://api.got.show/api'
 
 const filterSearch = (name, state ,query) => {
     if (state[name + 'Count'] <= 0) {
@@ -57,16 +57,53 @@ export default new Vuex.Store({
     }
   },
   actions: {
+       /*only makes network request 
+       if characters array does not exist 
+       **/
       async setAllCharacters({commit,state}, url){
-          let characters = await axios.get(`${baseUrl}${url}`)
-          commit('SET_CHARACTERS', characters.data)
-          state.isCharacterLoading = false
+          if (state.characters.length === 0) {
+            let characters = await axios.get(`${baseUrl}${url}`)
+            commit('SET_CHARACTERS', characters.data)
+            state.isCharacterLoading = false
+          }
       },
+      /*only makes network request 
+      if houses array does not exist 
+      **/
       async setAllHouses({commit, state}, url) {
-        let houses = await axios.get(`${baseUrl}${url}`)
-        console.log(houses)
-        commit('SET_HOUSES', houses.data)
-        state.isHouseLoading = false
+        if (state.houses.length === 0) {
+            let houses = await axios.get(`${baseUrl}${url}`)
+            commit('SET_HOUSES', houses.data)
+            state.isHouseLoading = false
+        }
+        
+      },
+      /*find character from existing character array.
+        No character?, make network request for it.
+      **/
+      getCharacter({state}, id) {
+          const url = `${baseUrl}/show/characters/bySlug/${id}/`
+          if (state.characters.length > 0) {
+            const character = state.characters.find(character => {
+                return character.slug === id
+            })
+            return Promise.resolve(character)
+          }
+          return axios.get(url).then((data) => data.data)
+      },
+      /*find house from existing house array.
+        No house?, make network request for it.
+      **/
+      getHouse({state}, id) {
+        const url = `${baseUrl}/show/houses/${id}/`
+        console.log(id)
+        if (state.houses.length > 0) {
+          const house = state.houses.find(house => {
+              return house.name === id
+          })
+          return Promise.resolve(house)
+        }
+        return axios.get(url).then((data) => data.data[0])
       },
       filterBySearch({commit}, obj) {
           commit('FILTER_BY_SEARCH', obj)
