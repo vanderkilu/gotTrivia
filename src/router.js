@@ -7,7 +7,7 @@ import Character from './components/Character.vue'
 import Houses from './components/Houses.vue'
 import House from './components/House.vue'
 import Weldone from './components/Weldone.vue'
-import WordScrambleList from './components/WordScrambleList'
+import WordScramble from './components/WordScramble'
 Vue.use(Router)
 
 
@@ -27,7 +27,7 @@ export default new Router({
         {
             path: '/quiz/scramble',
             name: 'scramble',
-            component: WordScrambleList
+            component: WordScramble
         },
         {
             path: '/characters',
