@@ -7,7 +7,7 @@
                     Can you achieve the iron throne or are you destined to 
                     join the night watch along the wall?
                 </p>
-                <router-link :to="{name: 'quiz'}" class="btn-cta">play the trivia <i class="arrow-right">&rarr;</i></router-link>
+                <router-link :to="{name: 'quiz'}" class="btn-outline">play the trivia <i class="arrow-right">&rarr;</i></router-link>
             </div>
             <div class="wrapper-right">
                 <p class="timer" v-if="!hasCountedDown"> 
@@ -126,17 +126,23 @@ export default {
      transition: all 0.3s;
  }    
 .arrow-down {
-     width: 2rem;
-     height: 2rem;
-     grid-column: 1 / 3;
-     margin: 0 auto;
-     cursor: pointer;
-     transition: all 0.5s;
-     padding: 1rem;
+    width: 2rem;
+    height: 2rem;
+    grid-column: 1 / 3;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.5s;
+    padding: 1rem;
 }
 .bold {
     font-weight: 500;
 }
+    a:link, a:visited {
+        text-decoration: none;
+    }
+    .btn-outline {
+        border: 3px solid var(--color-secondary);
+    }
 @media only screen and (max-width: 900px) {
     .wrapper {
         display: flex;

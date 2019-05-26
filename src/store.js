@@ -87,7 +87,10 @@ export default new Vuex.Store({
             const character = state.characters.find(character => {
                 return character.slug === id
             })
-            return Promise.resolve(character)
+            if (character) {
+                return Promise.resolve(character)
+            }
+            return axios.get(url).then((data) => data.data)
           }
           return axios.get(url).then((data) => data.data)
       },
@@ -101,7 +104,10 @@ export default new Vuex.Store({
           const house = state.houses.find(house => {
               return house.name === id
           })
-          return Promise.resolve(house)
+          if (house) {
+            return Promise.resolve(house)
+          }
+          return axios.get(url).then((data) => data.data[0])
         }
         return axios.get(url).then((data) => data.data[0])
       },

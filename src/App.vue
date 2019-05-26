@@ -46,22 +46,21 @@ export default {
     background-color:#183048;
     background-color: var(--bg-color);
   }
-  .btn-cta {
-     text-decoration: none;
-     padding: 2rem 4rem;
-     border-radius: 6rem;
-     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
-     background-color: var(--color-primary);
-     color: white;
-     font-size: 1.4rem;
-     transition: all 0.5s;
- }
- .btn-cta:focus {
-     outline: none;
- }
- .btn-cta:hover {
-     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.01);
- }
+  .btn-outline {
+        padding: 1.5rem 2rem;
+        background-color: transparent;
+        border: 2px solid var(--color-tertiary);
+        border-radius: 3px;
+        color: var(--color-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+  }
+    .btn-outline:focus {
+        outline: none;
+    }
+    .btn-outline:hover {
+        background-color: var(--color-tertiary);
+    }
   .wrapper-main {
     width: 60%;
     margin: 5rem auto;

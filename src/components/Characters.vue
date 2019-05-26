@@ -158,19 +158,5 @@ export default {
         margin: 0 auto;
         margin-bottom: 3rem;
     }
-    .btn-outline {
-        padding: 1.5rem 2rem;
-        background-color: transparent;
-        border: 2px solid var(--color-tertiary);
-        border-radius: 3px;
-        color: var(--color-secondary);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-    .btn-outline:focus {
-        outline: none;
-    }
-    .btn-outline:hover {
-        background-color: var(--color-tertiary);
-    }
+    
 </style>
