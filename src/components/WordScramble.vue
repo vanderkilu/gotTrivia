@@ -1,5 +1,6 @@
 <template>
     <div class="scramble">
+        <p class="scramble__instruction"> Quess the name of the character below </p>
         <h3 class="scramble__word">{{word}}</h3>
         <div class="user-words">
             <transition-group name="wordIn">
@@ -19,31 +20,50 @@
             </span>
         </div>
         <div class="btn">
-            <button class="btn-outline">Check Answer</button>
-            <button class="btn-outline"> Clear </button>
+            <button class="btn-outline" @click="checkAnswer">Check Answer</button>
+            <button class="btn-outline" @click="clear"> Clear </button>
         </div>
     </div>
 </template>
 
 <script>
 import {scramble} from '../helpers'
+import scrambler from '../assets/scrambler.json'
 export default {
     data() {
         return {
             enteredWords: [],
-            word: 'PETRBAELISH',
-            keypads: []
+            word: '',
+            correctWord: '',
+            keypads: [],
         }
-    },
-    mounted() {
-        this.word = scramble(this.word)
-        this.keypads = this.word.split('')
     },
     methods: {
         addLetter(letter) {
             this.enteredWords.push(letter)
-        }
-    }
+        },
+        clear() {
+            this.enteredWords = []
+        },
+        checkAnswer() {
+            return this.enteredWords.join('') === this.word.toLowerCase()
+        },
+        chooseCharacter() {
+            const random = Math.floor(Math.random() * scrambler.data.length)
+            return scrambler.data[random]
+        },
+        reset() {
+            const name = this.chooseCharacter.name.replace(' ', '')
+            this.correctWord = name
+            this.word = scramble(name)
+            this.keypads = this.word.split('')
+            this.enteredWords = []
+        },
+    },
+    mounted() {
+        this.reset() 
+        this.chooseWord() 
+    },
 }
 </script>
 
@@ -54,6 +74,7 @@ export default {
         align-items: center;
         flex-direction: column;
         margin: 10rem auto;
+        margin-top: 5rem;
     }
     .scramble__word {
         color: var(--color-secondary);
@@ -84,10 +105,13 @@ export default {
         justify-content: center;
         margin: 5rem;
     }
-    .user-word {
+    .user-word, .scramble__instruction {
         font-size: 1.7rem;
         color: white;
         padding: 1rem;
+    }
+    .scramble__instruction  {
+        margin-bottom: 2rem;
     }
     .wordIn-enter-active, .wordIn-leave-active {
         transition: all 0.5s cubic-bezier(1.0, 0.5, 0.8, 1.0);;

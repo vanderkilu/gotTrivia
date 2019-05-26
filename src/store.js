@@ -142,6 +142,5 @@ export default new Vuex.Store({
       paginateBy(state) {
           return state.paginateBy
       }
-      
   }
 })
