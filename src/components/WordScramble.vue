@@ -48,12 +48,12 @@ export default {
         checkAnswer() {
             return this.enteredWords.join('') === this.word.toLowerCase()
         },
-        chooseCharacter() {
+        randomCharacter() {
             const random = Math.floor(Math.random() * scrambler.data.length)
             return scrambler.data[random]
         },
         reset() {
-            const name = this.chooseCharacter.name.replace(' ', '')
+            const name = this.randomCharacter.name.replace(' ', '')
             this.correctWord = name
             this.word = scramble(name)
             this.keypads = this.word.split('')
@@ -61,8 +61,7 @@ export default {
         },
     },
     mounted() {
-        this.reset() 
-        this.chooseWord() 
+        this.reset()
     },
 }
 </script>
