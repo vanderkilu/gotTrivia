@@ -1,6 +1,10 @@
 <template>
     <div class="scramble">
+        <div class="sramble__score">
+            <span class="stat stat-correct">{{correctCount}}</span>
+        </div>
         <p class="scramble__instruction"> Quess the name of the character below </p>
+        <p class="scramble__hint"> Hint: I am of the house {{house}}</p>
         <h3 class="scramble__word">{{word}}</h3>
         <div class="user-words">
             <transition-group name="wordIn">
@@ -22,6 +26,7 @@
         <div class="btn">
             <button class="btn-outline" @click="checkAnswer">Check Answer</button>
             <button class="btn-outline" @click="clear"> Clear </button>
+            <button class="btn-outline" @click="reset"> Another Character </button>
         </div>
     </div>
 </template>
@@ -36,6 +41,9 @@ export default {
             word: '',
             correctWord: '',
             keypads: [],
+            house: '',
+            characters: scrambler,
+            correctCount: 0
         }
     },
     methods: {
@@ -46,19 +54,26 @@ export default {
             this.enteredWords = []
         },
         checkAnswer() {
-            return this.enteredWords.join('') === this.word.toLowerCase()
+            if (this.enteredWords.join('')
+                    .toLowerCase() 
+                    === this.correctWord) {
+                        console.log('passed')
+                    this.correctCount++
+            }
+            this.reset()
         },
         randomCharacter() {
-            const random = Math.floor(Math.random() * scrambler.data.length)
-            return scrambler.data[random]
+            const random = Math.floor(Math.random() * this.characters.length)
+            return this.characters[random]
         },
-        reset() {
-            const name = this.randomCharacter.name.replace(' ', '')
-            this.correctWord = name
-            this.word = scramble(name)
-            this.keypads = this.word.split('')
+        reset() {  
+            const name = this.randomCharacter().name
+            this.house = name.split(' ')[1] || name.split(' ')[0]
+            this.correctWord = name.replace(' ', '').toLowerCase()
+            this.word = scramble(name.replace(' ', '')).toUpperCase()
+            this.keypads = [...new Set(this.word.split(''))]
             this.enteredWords = []
-        },
+        }
     },
     mounted() {
         this.reset()
@@ -81,7 +96,7 @@ export default {
     }
     .scramble__word-keypard {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         width: 40%;
         justify-items: center;
         grid-gap: 1rem;
@@ -98,6 +113,11 @@ export default {
     }
     .scramble__letter:hover {
         background-color: var(--color-tertiary);
+    }
+    .scramble__hint {
+        font-size: 1.4rem;
+        color: #e0e0e0;
+        margin-bottom: 1rem;
     }
     .user-words {
         display: flex;
@@ -119,7 +139,25 @@ export default {
         opacity: 0;
         transform: translateX(6rem);
     }
-    .btn-outline:first-child {
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-outline {
         margin-right: 1rem;
+    }
+    .stat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.03);
+        margin: 1rem;
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        font-size: 1.5rem;
     }
 </style>

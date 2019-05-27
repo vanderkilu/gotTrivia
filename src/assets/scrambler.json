@@ -1,4 +1,4 @@
-{"data": [
+[
     {
 		"_id": "5cc0757c04e71a0010b86af2",
 		"name": "Catelyn Stark",
@@ -245,5 +245,4 @@
         "slug": "Arthur_Dayne",
         "mentions": 21
       }
-	]
-}
+]
