@@ -20,11 +20,16 @@
                     </span>  
                     was {{ thirdPerson }} first scene   
                 </p>
-                <button class="btn btn-favourite">Add To Favourites 💜 😍 💗</button>
+                <a class="btn btn-outline" 
+                    :href="characterLink"
+                    target="_blank"> 
+                    Find More on this character <span>&#10148;</span>
+                </a>
             </div>
         </div>
         <div class="description">
             <h3 class="description__header"> Relations </h3>
+            <p class="description__text">Friends, Foe, Allies, Family</p>
             <div class="card-container">
                 <div class="card" v-for="character in character.related" 
                                   :key="character._id" 
@@ -80,6 +85,9 @@ export default {
                 return "his"
             }
             return "her"
+        },
+        characterLink() {
+            return `https://gameofthrones.fandom.com/wiki/${this.character.slug}`
         },
         meter() {
             return (this.character.appearances.length / 73.0) * 100
@@ -174,17 +182,6 @@ export default {
     .noe {
         color: white;
     }
-    .btn-favourite {
-        padding: 1.5rem 2rem;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
-        background-color: var(--color-secondary);
-        color: var(--color-primary);
-        font-size: 1.4rem;
-        transition: all 0.5s;
-        cursor: pointer;
-    }
     .btn {
         margin-top: 4rem;
     }
@@ -194,7 +191,13 @@ export default {
     .description__header {
         font-size: 2rem;
         color: var(--color-secondary);
+       
+    }
+    .description__text {
+        font-size: 1.7rem;
+        margin-top: 2rem;
         margin-bottom: 5rem;
+        color: var(--color-secondary);
     }
     .card-container {
         grid-gap: 1rem;
@@ -224,5 +227,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    a:link, a:visited {
+        text-decoration: none;
     }
 </style>
