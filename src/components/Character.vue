@@ -29,7 +29,7 @@
         </div>
         <div class="description">
             <h3 class="description__header"> Relations </h3>
-            <p class="description__text">Friends, Foe, Allies, Family</p>
+            <p class="description__text">Friends, Foe, Allies, Family, Enemies </p>
             <div class="card-container">
                 <div class="card" v-for="character in character.related" 
                                   :key="character._id" 

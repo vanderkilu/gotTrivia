@@ -1,5 +1,6 @@
 <template>
     <div class="scramble">
+        <p class="time"> {{ time }} </p>
         <div class="sramble__score">
             <span class="stat stat-correct">{{correctCount}}</span>
         </div>
@@ -39,7 +40,7 @@
 </template>
 
 <script>
-import {scramble} from '../helpers'
+import {scramble, Timer} from '../helpers'
 import scrambler from '../assets/scrambler.json'
 export default {
     data() {
@@ -51,7 +52,8 @@ export default {
             house: '',
             characters: scrambler,
             correctCount: 0,
-            show: false
+            show: false,
+            time: ''
         }
     },
     methods: {
@@ -64,6 +66,21 @@ export default {
         isCorrect() {
             return this.enteredWords.join('')
                     .toLowerCase() === this.correctWord
+        },
+        startTime(duration) {
+            let timer = duration, minutes, seconds;
+            setInterval(()=> {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                this.time = minutes + ":" + seconds;
+                if (--timer < 0) {
+                    this.$router.push({name: 'weldone', 
+                    params: {score: {correct: this.correctCount, 
+                    total: this.characters.length}}})
+                }
+            }, 1000);
         },
         checkAnswer() {
             if (this.isCorrect()) {
@@ -90,6 +107,7 @@ export default {
     },
     mounted() {
         this.reset()
+        this.startTime(60*5)
     },
 }
 </script>
@@ -101,7 +119,11 @@ export default {
         align-items: center;
         flex-direction: column;
         margin: 10rem auto;
-        margin-top: 5rem;
+        margin-top: 2rem;
+    }
+    .time {
+        color: white;
+        font-size: 1.7rem;
     }
     .scramble__word {
         color: var(--color-secondary);
