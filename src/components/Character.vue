@@ -5,7 +5,7 @@
                 <img :src="character.image" alt="character-image" class="character__image">
             </div>
             <div class="character__right">
-                <h3 class="character__name">{{character.name}}</h3>
+                <h3 class="character__name" v-html="character.name"></h3>
                 <p class="character__played-by">played by <span class="color-yellow">{{character.actor }}</span> </p>
                 <div class="character__run">
                     <p> appearance meter <span class="noe">( {{ character.appearances.length }} episodes )</span> </p>
@@ -13,7 +13,9 @@
                         <div class="progress__main" :style="{width: meter + '%'}"></div>
                     </div> 
                 </div>
-                <p class="character__house">{{character.name}} is of  <span class="color-yellow">{{character.house}}</span> </p>
+                <p class="character__house">{{character.name}} is of  
+                    <span class="color-yellow" v-html="character.house"></span> 
+                </p>
                 <p class="character__first-seen">
                     <span class="color-yellow">
                         {{character.first_seen}} 
