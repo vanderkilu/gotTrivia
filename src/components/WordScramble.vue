@@ -69,14 +69,15 @@ export default {
         },
         startTime(duration) {
             let timer = duration, minutes, seconds;
-            setInterval(()=> {
+            const time = setInterval(()=> {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
                 this.time = minutes + ":" + seconds;
                 if (--timer < 0) {
-                    this.$router.push({name: 'weldone', 
+                    clearInterval(time)
+                    return this.$router.push({name: 'weldone', 
                     params: {score: {correct: this.correctCount, 
                     total: this.characters.length}}})
                 }

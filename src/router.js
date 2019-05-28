@@ -21,7 +21,7 @@ export default new Router({
             component: Home
         }, 
         {
-            path: '/quiz/',
+            path: '/games/',
             name: 'games',
             component: Games
         },
@@ -58,7 +58,8 @@ export default new Router({
         {
             path: '/weldone',
             name: 'weldone',
-            component: Weldone
+            component: Weldone,
+            props: true
         },
         { path: '/*', redirect: { name: 'home' }}
     ],

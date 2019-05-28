@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <p class="done-message">Hey <i class="emoji">👋</i> awesome player,you have completed the quiz </p>
-            <p class="done-message__small">you got <i class="score"> {{score.correct}} / {{score.total}} </i> right answers</p>
+            <p class="done-message__small">you got <i class="score"> {{score.correct || 0}} / {{score.total || 0}} </i> right answers</p>
         </div>
         <router-link :to="{name: 'games'}" class="btn-outline">back to quiz<i class="arrow-right">&larr;</i></router-link>
     </div>
@@ -10,20 +10,7 @@
 
 <script>
 export default {
-    data() {
-        return {
-            score: {
-                correct: 0,
-                total: 0
-            }
-        }
-    },
-    mounted() {
-        if (this.$route.params.score) {
-            this.score.correct = this.$route.params.score.correct
-            this.score.total = this.$route.params.score.total
-        }
-    }
+    props: ['score'],
 }
 </script>
 
