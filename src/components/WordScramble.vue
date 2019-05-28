@@ -67,6 +67,10 @@ export default {
             return this.enteredWords.join('')
                     .toLowerCase() === this.correctWord
         },
+        /**
+         * set timer and automatically route
+         * when the time is up
+         */
         startTime(duration) {
             let timer = duration, minutes, seconds;
             const time = setInterval(()=> {
@@ -81,7 +85,9 @@ export default {
                     params: {score: {correct: this.correctCount, 
                     total: this.characters.length}}})
                 }
-            }, 1000);
+            }, 1000)
+            return  () => clearInterval(time)
+
         },
         checkAnswer() {
             if (this.isCorrect()) {
@@ -108,8 +114,12 @@ export default {
     },
     mounted() {
         this.reset()
-        this.startTime(60*4)
+        this.unsetTimer = this.startTime(60*0.5)
     },
+    beforeDestroy() {
+        //clear the timer before component destroy
+        this.unsetTimer() 
+    }
 }
 </script>
 

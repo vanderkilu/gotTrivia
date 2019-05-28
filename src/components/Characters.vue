@@ -75,7 +75,7 @@ export default {
             **/
             window.onscroll = ()=> {
                 let bottomOfWindow = document.documentElement.scrollTop + 
-                    window.innerHeight === document.documentElement.offsetHeight
+                    window.innerHeight + 400 >= document.documentElement.offsetHeight 
                 if (bottomOfWindow) {
                     setTimeout(()=>this.setPaginateBy(this.paginateBy += 10), 1000)
                 }
