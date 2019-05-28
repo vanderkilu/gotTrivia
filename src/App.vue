@@ -1,7 +1,7 @@
 <template>
   <div>
       <app-navigation></app-navigation>
-      <transition name="fade">
+      <transition name="fade" mode="out-in">
            <router-view :key="$route.path"></router-view>
       </transition>
   </div>
@@ -127,6 +127,9 @@ export default {
         text-align: center;
         color: white;
         cursor: pointer;
+    }
+    a:link, a:visited {
+        text-decoration: none;
     }
   @media only screen and (max-width: 900px) {
     .wrapper-main {

@@ -7,7 +7,7 @@
                     Can you achieve the iron throne or are you destined to 
                     join the night watch along the wall?
                 </p>
-                <router-link :to="{name: 'quiz'}" class="btn-outline">play the trivia <i class="arrow-right">&rarr;</i></router-link>
+                <router-link :to="{name: 'games'}" class="btn-outline">play the trivia <i class="arrow-right">&rarr;</i></router-link>
             </div>
             <div class="wrapper-right">
                 <p class="timer-text bold">Winter Is Here </p>

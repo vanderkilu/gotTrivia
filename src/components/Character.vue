@@ -228,7 +228,4 @@ export default {
         justify-content: center;
         align-items: center;
     }
-    a:link, a:visited {
-        text-decoration: none;
-    }
 </style>

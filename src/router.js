@@ -8,6 +8,7 @@ import Houses from './components/Houses.vue'
 import House from './components/House.vue'
 import Weldone from './components/Weldone.vue'
 import WordScramble from './components/WordScramble'
+import Games from './components/Games'
 Vue.use(Router)
 
 
@@ -20,7 +21,12 @@ export default new Router({
             component: Home
         }, 
         {
-            path: '/quiz',
+            path: '/quiz/',
+            name: 'games',
+            component: Games
+        },
+        {
+            path: '/quiz/triva',
             name: 'quiz',
             component: QuizCard
         },

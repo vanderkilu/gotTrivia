@@ -4,7 +4,7 @@
             <p class="done-message">Hey <i class="emoji">👋</i> awesome player,you have completed the quiz </p>
             <p class="done-message__small">you got <i class="score"> {{score.correct}} / {{score.total}} </i> right answers</p>
         </div>
-        <router-link :to="{name: 'quiz'}" class="btn-cta">back to quiz<i class="arrow-right">&larr;</i></router-link>
+        <router-link :to="{name: 'games'}" class="btn-outline">back to quiz<i class="arrow-right">&larr;</i></router-link>
     </div>
 </template>
 

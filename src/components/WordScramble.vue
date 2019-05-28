@@ -107,7 +107,7 @@ export default {
     },
     mounted() {
         this.reset()
-        this.startTime(60*5)
+        this.startTime(60*1)
     },
 }
 </script>
