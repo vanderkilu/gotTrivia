@@ -144,12 +144,6 @@
 		"mentions": 32
 	},
 	{
-		"_id": "5cc0757c04e71a0010b86ada",
-		"name": "Brienne of Tarth",
-		"slug": "Brienne_of_Tarth",
-		"mentions": 10
-	},
-	{
 		"_id": "5cc0757c04e71a0010b86ad9",
 		"name": "Yohn Royce",
 		"slug": "Yohn_Royce",
@@ -168,18 +162,6 @@
         "mentions": 36
       },
       {
-        "_id": "5cc0757c04e71a0010b86ad3",
-        "name": "Pycelle",
-        "slug": "Pycelle",
-        "mentions": 5
-      },
-      {
-        "_id": "5cc0757c04e71a0010b86ad2",
-        "name": "Varys",
-        "slug": "Varys",
-        "mentions": 22
-      },
-      {
         "_id": "5cc0757c04e71a0010b86ad1",
         "name": "Barristan Selmy",
         "slug": "Barristan_Selmy",
@@ -190,18 +172,6 @@
         "name": "Ilyn Payne",
         "slug": "Ilyn_Payne",
         "mentions": 11
-      },
-      {
-        "_id": "5cc0757c04e71a0010b86acf",
-        "name": "Gendry",
-        "slug": "Gendry",
-        "mentions": 7
-      },
-      {
-        "_id": "5cc0757c04e71a0010b86ace",
-        "name": "Yoren",
-        "slug": "Yoren",
-        "mentions": 6
       },
       {
         "_id": "5cc0757c04e71a0010b86acd",
@@ -216,12 +186,6 @@
         "mentions": 17
       },
       {
-        "_id": "5cc0757c04e71a0010b86acb",
-        "name": "Vala",
-        "slug": "Vala",
-        "mentions": 4
-      },
-      {
         "_id": "5cc0757c04e71a0010b86aca",
         "name": "Lyanna Stark",
         "slug": "Lyanna_Stark",
@@ -232,12 +196,6 @@
         "name": "Rhaegar Targaryen",
         "slug": "Rhaegar_Targaryen",
         "mentions": 16
-      },
-      {
-        "_id": "5cc0757c04e71a0010b86ac8",
-        "name": "Aerys II Targaryen",
-        "slug": "Aerys_II_Targaryen",
-        "mentions": 7
       },
       {
         "_id": "5cc0757c04e71a0010b86ac7",

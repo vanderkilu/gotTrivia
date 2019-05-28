@@ -28,6 +28,13 @@
             <button class="btn-outline" @click="clear"> Clear </button>
             <button class="btn-outline" @click="reset"> Another Character </button>
         </div>
+        <transition name="fade" mode="out-in">
+            <div class="message" v-show="show">
+                <h3 v-if="isCorrect()" class="correct">Correct</h3>
+                <h3 v-else class="wrong">Wrong</h3>
+            </div>
+        </transition>
+        
     </div>
 </template>
 
@@ -43,7 +50,8 @@ export default {
             keypads: [],
             house: '',
             characters: scrambler,
-            correctCount: 0
+            correctCount: 0,
+            show: false
         }
     },
     methods: {
@@ -53,14 +61,18 @@ export default {
         clear() {
             this.enteredWords = []
         },
+        isCorrect() {
+            return this.enteredWords.join('')
+                    .toLowerCase() === this.correctWord
+        },
         checkAnswer() {
-            if (this.enteredWords.join('')
-                    .toLowerCase() 
-                    === this.correctWord) {
-                        console.log('passed')
-                    this.correctCount++
+            if (this.isCorrect()) {
+                this.correctCount++
             }
-            this.reset()
+            this.show = true
+            setTimeout(()=> {
+                this.reset()
+            }, 1000)
         },
         randomCharacter() {
             const random = Math.floor(Math.random() * this.characters.length)
@@ -73,6 +85,7 @@ export default {
             this.word = scramble(name.replace(' ', '')).toUpperCase()
             this.keypads = [...new Set(this.word.split(''))]
             this.enteredWords = []
+            this.show = false
         }
     },
     mounted() {
@@ -159,5 +172,24 @@ export default {
         background-color: #e8f5e9;
         color: #1b5e20;
         font-size: 1.5rem;
+    }
+    .message {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        z-index: 2;
+    }
+    .correct, .wrong {
+        text-align: center;
+        color: white;
+        font-size: 2rem;
+    }
+    .wrong {
+        color: #e57373;
+    }
+    .correct {
+        color: #a5d6a7;
     }
 </style>
