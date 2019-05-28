@@ -114,7 +114,7 @@ export default {
     },
     mounted() {
         this.reset()
-        this.unsetTimer = this.startTime(60*0.5)
+        this.unsetTimer = this.startTime(60*6) //set initial time to 6min
     },
     beforeDestroy() {
         //clear the timer before component destroy
