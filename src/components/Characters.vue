@@ -158,5 +158,16 @@ export default {
         margin: 0 auto;
         margin-bottom: 3rem;
     }
+     @media only screen and (max-width: 900px) { 
+         .character-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .characters__filter {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 1rem;
+            width: 80%;
+        }
+     }
     
 </style>

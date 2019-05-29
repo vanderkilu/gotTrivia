@@ -8,7 +8,7 @@
             <router-link class="card" :to="{name: 'scramble'}">
                 <p class="card__text"> Character Scramble </p>
             </router-link>
-            <h3 class="or"> Or check your favorite  </h3>
+            <h3 class="or"> Or check  </h3>
             <router-link class="card" :to="{name: 'characters'}">
                 <p class="card__text"> characters </p>
             </router-link>
@@ -33,6 +33,7 @@
         font-size: 2rem;
         color: var(--color-secondary);
         margin-bottom: 5rem;
+        text-align: center;
     }
     .trivia__games {
         display: grid;
@@ -56,5 +57,23 @@
         font-size: 2rem;
         color: var(--color-secondary);
         margin: 3rem 0;
+    }
+    @media only screen and (max-width: 900px) { 
+        .trivia {
+            width: 90%;
+            margin: 2rem;
+        }
+        .trivia__games {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-gap: 2rem;
+        }
+        .card {
+            min-height: 2.5rem;
+            padding: 1rem;
+        }
+        .or, .trivia__heading {
+            font-size: 1.8rem;
+        }
     }
 </style>

@@ -66,7 +66,7 @@ export default {
 
 
 <style scoped>
-.container-detail {
+    .container-detail {
         width: 50%;
         margin: 5rem auto;
         margin-top: 10rem;
@@ -102,6 +102,14 @@ export default {
         color: var(--color-secondary);
         margin-bottom: 2rem;
         font-weight: 600;
+    }
+    @media only screen and (max-width: 900px) {
+        .container-detail {
+            width: 80%;
+            margin: 5rem auto;
+            margin-top: 10rem;
+            position: relative;
+        }
     }
 </style>
 

@@ -13,14 +13,14 @@
                         <div class="progress__main" :style="{width: meter + '%'}"></div>
                     </div> 
                 </div>
-                <p class="character__house">{{character.name}} is of  
+                <p class="character__house">{{character.name}} is of   
                     <span class="color-yellow" v-html="character.house"></span> 
                 </p>
                 <p class="character__first-seen">
                     <span class="color-yellow">
                         {{character.first_seen}} 
                     </span>  
-                    was {{ thirdPerson }} first scene   
+                     <span class="scene"> was {{ thirdPerson }} first scene </span>    
                 </p>
                 <a class="btn btn-outline" 
                     :href="characterLink"
@@ -229,5 +229,27 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    @media only screen and (max-width: 900px) {
+        .container-detail {
+            width: 80%;
+            margin: 5rem auto;
+        }
+        .character {
+            display: flex;
+            flex-direction: column;
+        }
+        .character__left  {
+            flex-basis: 100%;
+        }
+        .character__right {
+            flex-basis: 100%;
+            padding: 2rem;
+            color: white;
+        }
+        .scene {
+            display: block;
+            margin-top: 1rem;
+        }
     }
 </style>

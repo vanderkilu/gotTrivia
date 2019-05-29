@@ -114,7 +114,7 @@ export default {
     },
     mounted() {
         this.reset()
-        this.unsetTimer = this.startTime(60*6) //set initial time to 6min
+        // this.unsetTimer = this.startTime(60*6) //set initial time to 6min
     },
     beforeDestroy() {
         //clear the timer before component destroy
@@ -174,6 +174,7 @@ export default {
         font-size: 1.7rem;
         color: white;
         padding: 1rem;
+        text-align: center;
     }
     .scramble__instruction  {
         margin-bottom: 2rem;
@@ -192,6 +193,7 @@ export default {
     }
     .btn-outline {
         margin-right: 1rem;
+        border: 2px solid var(--color-secondary);
     }
     .stat {
         display: flex;
@@ -225,4 +227,33 @@ export default {
     .correct {
         color: #a5d6a7;
     }
+     @media only screen and (max-width: 900px) { 
+         .scramble {
+             width: 80%;
+             margin: 2rem auto;
+         }
+         .scramble__word-keypard {
+            grid-template-columns: repeat(3, 1fr);
+            width: 90%;
+            justify-items: center;
+            grid-gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .scramble__word {
+            color: var(--color-secondary);
+            font-size: 2rem;
+        }
+        .user-word {
+            font-size: 1.5rem;
+            color: white;
+            padding: 0.2rem;
+        }
+        .btn {
+            flex-direction: column;
+        }
+        .btn-outline {
+            margin: 1rem;
+            min-width:50%; 
+        }
+     }
 </style>
