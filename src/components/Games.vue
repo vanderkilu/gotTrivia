@@ -8,6 +8,13 @@
             <router-link class="card" :to="{name: 'scramble'}">
                 <p class="card__text"> Character Scramble </p>
             </router-link>
+            <h3 class="or"> Or check your favorite  </h3>
+            <router-link class="card" :to="{name: 'characters'}">
+                <p class="card__text"> characters </p>
+            </router-link>
+            <router-link class="card" :to="{name: 'houses'}">
+                <p class="card__text"> Houses </p>
+            </router-link>
         </div>
     </div>
 </template>
@@ -19,7 +26,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 20rem auto;
+        margin: 10rem auto;
         width: 50%;
     }
     .trivia__heading {
@@ -42,5 +49,12 @@
     .card__text {
         font-size: 1.7rem;
         color: var(--color-secondary);
+    }
+    .or {
+        grid-column: 1 / -1 ;
+        text-align: center;
+        font-size: 2rem;
+        color: var(--color-secondary);
+        margin: 3rem 0;
     }
 </style>

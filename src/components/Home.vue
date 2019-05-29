@@ -10,7 +10,7 @@
                 <router-link :to="{name: 'games'}" class="btn-outline">play the trivia <i class="arrow-right">&rarr;</i></router-link>
             </div>
             <div class="wrapper-right">
-                <p class="timer-text bold">Winter Is Here </p>
+               <h3 class=" text-bold ">Winter Is Here <span class="emoji"> ❄ ⚔️ 🐲 </span> </h3>
             </div>
         </div>
     </div>
@@ -34,9 +34,9 @@ export default {
      background-repeat: no-repeat;
      background-image: url('../assets/back.jpg');
  }
- .timer-text {
+ .text-bold {
      text-align: center;
-     font-size: 1.8rem;
+     font-size: 3.5rem;
      margin-top: 2rem;
      color: white;
  }
@@ -45,19 +45,15 @@ export default {
      padding-left: 2rem;
  }
  .wrapper-right {
-     margin-top: 30rem;
-     padding-right: 2rem;
- }
- .timer {
+     padding: 2rem 6rem;
      display: flex;
      justify-content: center;
-     color: white;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
  }
- .timer__element {
-     margin-left: 2rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-
+ .emoji {
+     color: var(--color-secondary);
  }
  .sub {
      color: #eeeeee;
@@ -94,12 +90,12 @@ export default {
 .bold {
     font-weight: 500;
 }
-    a:link, a:visited {
-        text-decoration: none;
-    }
-    .btn-outline {
-        border: 3px solid var(--color-secondary);
-    }
+a:link, a:visited {
+    text-decoration: none;
+}
+.btn-outline {
+    border: 3px solid var(--color-secondary);
+}
 @media only screen and (max-width: 900px) {
     .wrapper {
         display: flex;
