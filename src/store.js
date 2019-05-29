@@ -99,7 +99,6 @@ export default new Vuex.Store({
       **/
       getHouse({state}, id) {
         const url = `${baseUrl}/show/houses/${id}/`
-        console.log(id)
         if (state.houses.length > 0) {
           const house = state.houses.find(house => {
               return house.name === id

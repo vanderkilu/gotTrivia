@@ -22,12 +22,9 @@
 
 <style scoped>
     .trivia {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 10rem auto;
         width: 50%;
+        margin: 10rem auto;
+        
     }
     .trivia__heading {
         font-size: 2rem;
@@ -60,8 +57,8 @@
     }
     @media only screen and (max-width: 900px) { 
         .trivia {
-            width: 90%;
-            margin: 2rem;
+            width: 80%;
+            margin: 2rem auto;
         }
         .trivia__games {
             display: grid;
