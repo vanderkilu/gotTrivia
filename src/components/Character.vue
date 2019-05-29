@@ -251,5 +251,14 @@ export default {
             display: block;
             margin-top: 1rem;
         }
+        .character__name {
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
     }
+     @media only screen and (max-width: 900px) {
+         .btn {
+             font-size: 1.2rem;
+         }
+     }
 </style>
